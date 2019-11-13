@@ -14,6 +14,7 @@ public class RacingCarController {
             String carNames = InputView.inputCarName();
             Cars cars = racingCarService.createCarsByParsingWith(carNames);
 
+            String count = InputView.inputGameCount();
         } catch (IllegalArgumentException e) {
             OutputView.printExceptionMessageForPlayer(e);
         }
