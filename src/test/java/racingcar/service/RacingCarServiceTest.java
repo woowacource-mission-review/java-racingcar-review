@@ -1,0 +1,42 @@
+package racingcar.service;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import racingcar.domain.Cars;
+import racingcar.exception.DuplicateCarsException;
+import racingcar.exception.LackOfCarsException;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+class RacingCarServiceTest {
+
+    private RacingCarService racingCarService;
+
+    @BeforeEach
+    void setUp() {
+        racingCarService = new RacingCarService();
+    }
+
+    @Test
+    @DisplayName("콤마로 구분된 Car 이름들을 받아 Cars로 반환하는 메소드")
+    void createCarsByParsingWith() {
+        Cars cars = racingCarService.createCarsByParsingWith("red, blue, green");
+
+        assertThat(cars.size()).isEqualTo(3);
+        // TODO: 13/11/2019 Car 비교함수 생성 후 contains check
+    }
+
+    @Test
+    @DisplayName("콤마로 구분된 Car 이름의 개수가 2개 미만일 경우 예외 발생")
+    void createCarsByParsingWith_lackOfCarsException() {
+        assertThrows(LackOfCarsException.class, () -> racingCarService.createCarsByParsingWith("red"));
+    }
+
+    @Test
+    @DisplayName("Car 이름이 중복된 경우 예외 발생")
+    void createCarsByParsingWith_duplicateCars() {
+        assertThrows(DuplicateCarsException.class, () -> racingCarService.createCarsByParsingWith("red, blue, red"));
+    }
+}

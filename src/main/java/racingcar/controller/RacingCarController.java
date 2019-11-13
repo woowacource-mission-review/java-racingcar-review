@@ -1,16 +1,16 @@
 package racingcar.controller;
 
-import racingcar.exception.LackOfCarsException;
+import racingcar.domain.Cars;
+import racingcar.service.RacingCarService;
 import racingcar.view.InputView;
 
 public class RacingCarController {
 
+    private final RacingCarService racingCarService = new RacingCarService();
+
     public void run() {
         String carNames = InputView.inputCarName();
 
-        String[] nameTokens = carNames.split(",");
-        if (nameTokens.length < 2) {
-            throw new LackOfCarsException("자동차의 수는 " + 2 + "대 이상 입력해 주세요.");
-        }
+        Cars cars = racingCarService.createCarsByParsingWith(carNames);
     }
 }
