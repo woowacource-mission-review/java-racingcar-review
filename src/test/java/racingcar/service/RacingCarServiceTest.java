@@ -3,6 +3,7 @@ package racingcar.service;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.exception.DuplicateCarsException;
 import racingcar.exception.LackOfCarsException;
@@ -25,7 +26,9 @@ class RacingCarServiceTest {
         Cars cars = racingCarService.createCarsByParsingWith("red, blue, green");
 
         assertThat(cars.size()).isEqualTo(3);
-        // TODO: 13/11/2019 Car 비교함수 생성 후 contains check
+        assertThat(cars.contains(new Car("red"))).isTrue();
+        assertThat(cars.contains(new Car("blue"))).isTrue();
+        assertThat(cars.contains(new Car("green"))).isTrue();
     }
 
     @Test

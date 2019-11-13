@@ -13,4 +13,8 @@ public class Cars {
     public int size() {
         return cars.size();
     }
+
+    public boolean contains(final Car car) {
+        return cars.contains(car);
+    }
 }

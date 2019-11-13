@@ -34,4 +34,13 @@ class CarTest {
 
         assertThrows(ExcessOfCarNameLengthException.class, () -> new Car("violet"));
     }
+
+    @Test
+    @DisplayName("position 상관 없이 자동차 이름이 같으면 같은 자동차")
+    void equals() {
+        Car car1 = new Car("red", 0);
+        Car car2 = new Car("red", 1);
+
+        assertThat(car1.equals(car2)).isTrue();
+    }
 }

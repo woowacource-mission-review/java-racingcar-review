@@ -14,8 +14,13 @@ class NameTest {
     void createName() {
         String newName = "이름";
         Name name = new Name(newName);
-       
+
         assertThat(name.getName()).isEqualTo(newName);
+    }
+
+    @Test
+    void equals() {
+        assertThat(new Name("sameName")).isEqualTo(new Name("sameName"));
     }
 
     @Test

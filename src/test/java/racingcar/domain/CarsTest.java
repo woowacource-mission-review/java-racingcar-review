@@ -27,4 +27,15 @@ class CarsTest {
 
         assertThat(cars.size()).isEqualTo(3);
     }
+
+    @Test
+    void contains() {
+        Cars cars = new Cars(this.cars);
+
+        assertThat(cars.contains(new Car("red"))).isTrue();
+        assertThat(cars.contains(new Car("blue"))).isTrue();
+        assertThat(cars.contains(new Car("green"))).isTrue();
+
+        assertThat(cars.contains(new Car("black"))).isFalse();
+    }
 }
