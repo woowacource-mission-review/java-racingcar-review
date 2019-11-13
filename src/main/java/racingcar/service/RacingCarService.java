@@ -1,7 +1,9 @@
 package racingcar.service;
 
+import org.apache.commons.lang3.math.NumberUtils;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
+import racingcar.domain.GameCount;
 import racingcar.exception.DuplicateCarsException;
 import racingcar.exception.LackOfCarsException;
 
@@ -48,5 +50,12 @@ public class RacingCarService {
         Set<String> nameSet = new HashSet<>(names);
 
         return names.size() != nameSet.size();
+    }
+
+    public GameCount createGameCount(final String count) {
+        if (NumberUtils.isNumber(count)) {
+            return new GameCount(Integer.parseInt(count));
+        }
+        throw new NumberFormatException("정수로 입력해 주세요.");
     }
 }

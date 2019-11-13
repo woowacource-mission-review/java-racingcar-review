@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import racingcar.domain.Cars;
+import racingcar.domain.GameCount;
 import racingcar.service.RacingCarService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -15,6 +16,7 @@ public class RacingCarController {
             Cars cars = racingCarService.createCarsByParsingWith(carNames);
 
             String count = InputView.inputGameCount();
+            GameCount gameCount = racingCarService.createGameCount(count);
         } catch (IllegalArgumentException e) {
             OutputView.printExceptionMessageForPlayer(e);
         }
