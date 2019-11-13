@@ -16,17 +16,8 @@ public class RacingCarService {
     private static final String CAR_NAME_DELIMITER = ",";
     public static final int MIN_NUM_OF_RACING_CARS = 2;
 
-    public Cars createCarsByParsingWith(String names) {
-        String[] nameTokens = names.split(CAR_NAME_DELIMITER);
-        if (nameTokens.length < MIN_NUM_OF_RACING_CARS) {
-            throw new LackOfCarsException();
-        }
-
-        List<String> carNames = trim(nameTokens);
-
-        if (hasDuplicateNamesIn(carNames)) {
-            throw new DuplicateCarsException();
-        }
+    public Cars createCarsByParsingWith(final String names) {
+        List<String> carNames = parseCarNames(names);
 
         List<Car> cars = carNames.stream()
                 .map(Car::new)
@@ -34,15 +25,28 @@ public class RacingCarService {
         return new Cars(cars);
     }
 
-    private boolean hasDuplicateNamesIn(List<String> names) {
-        Set<String> nameSet = new HashSet<>(names);
+    private List<String> parseCarNames(final String names) {
+        String[] nameTokens = names.split(CAR_NAME_DELIMITER);
+        if (nameTokens.length < MIN_NUM_OF_RACING_CARS) {
+            throw new LackOfCarsException();
+        }
 
-        return names.size() != nameSet.size();
+        List<String> carNames = trim(nameTokens);
+        if (hasDuplicateNamesIn(carNames)) {
+            throw new DuplicateCarsException();
+        }
+        return carNames;
     }
 
     private List<String> trim(final String[] nameTokens) {
         return Arrays.stream(nameTokens)
                 .map(String::trim)
                 .collect(Collectors.toList());
+    }
+
+    private boolean hasDuplicateNamesIn(final List<String> names) {
+        Set<String> nameSet = new HashSet<>(names);
+
+        return names.size() != nameSet.size();
     }
 }
