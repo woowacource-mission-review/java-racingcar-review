@@ -3,16 +3,17 @@ package model;
 import model.exception.CarCreateException;
 
 public class Car {
+    public static final int DEFAULT_POSITION = 0;
+
     private String name;
-    private Integer position;
+    private int position;
 
     public Car(String name) {
-        this(name, 0);
+        this(name, DEFAULT_POSITION);
     }
 
-    public Car(String name, Integer position) {
+    public Car(String name, int position) {
         validateName(name);
-        validatePosition(position);
         this.name = name;
         this.position = position;
     }
@@ -34,13 +35,7 @@ public class Car {
         }
     }
 
-    private void validatePosition(Integer position) {
-        if (position == null) {
-            throw new CarCreateException("위치에 NULL을 입력할 수 없습니다.");
-        }
-    }
-
-    public boolean matchPosition(Integer position) {
-        return this.position.equals(position);
+    public boolean matchPosition(int position) {
+        return this.position == position;
     }
 }

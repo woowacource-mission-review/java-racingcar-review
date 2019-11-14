@@ -2,7 +2,7 @@ package model;
 
 public class DefaultRandomMoveStrategy implements MoveStrategy {
     @Override
-    public boolean canMove(Integer seed) {
+    public boolean canMove(int seed) {
         return seed >= 4;
     }
 }
