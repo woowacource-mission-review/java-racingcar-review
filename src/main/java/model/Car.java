@@ -35,6 +35,10 @@ public class Car {
         }
     }
 
+    public int move(boolean moveFlag) {
+        return moveFlag ? ++position : position;
+    }
+
     public boolean matchPosition(int position) {
         return this.position == position;
     }

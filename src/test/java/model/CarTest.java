@@ -6,8 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static model.Car.DEFAULT_POSITION;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CarTest {
     private static final String CAR_NAME = "ABC";
@@ -49,5 +48,19 @@ public class CarTest {
     @DisplayName("이름에 NULL 입력시 차 생성 에러")
     void car_create_null_name() {
         assertThrows(CarCreateException.class, () -> new Car(null));
+    }
+
+    @Test
+    @DisplayName("자동차 이동 성공시 위치 증가")
+    void car_move_success() {
+        Car car = new Car(CAR_NAME);
+        assertEquals(car.move(true), DEFAULT_POSITION + 1);
+    }
+
+    @Test
+    @DisplayName("자동차 이동 실패시 위치 동일한지")
+    void car_move_failure() {
+        Car car = new Car(CAR_NAME);
+        assertEquals(car.move(false), DEFAULT_POSITION);
     }
 }
