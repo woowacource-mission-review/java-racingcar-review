@@ -14,9 +14,13 @@ public class Car {
     }
 
     public void move(final MoveStrategy moveStrategy) {
-        if (moveStrategy.isAvailableMove()) {
+        if (moveStrategy.isAvailableMove(this)) {
             position = position.increase();
         }
+    }
+
+    public boolean isSamePosition(int position){
+        return getPosition() == position;
     }
 
     public String getName() {

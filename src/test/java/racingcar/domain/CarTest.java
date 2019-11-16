@@ -16,7 +16,7 @@ class CarTest {
         int expected = car.getPosition();
 
         // when
-        car.move(() -> false);
+        car.move(x -> false);
         int actual = car.getPosition();
 
         // then
@@ -30,7 +30,7 @@ class CarTest {
         int expected = car.getPosition()+1;
 
         // when
-        car.move(() -> true);
+        car.move(x -> true);
         int actual = car.getPosition();
 
         // then
