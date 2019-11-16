@@ -1,7 +1,5 @@
 package racingcar.view;
 
-import racingcar.domain.GameCount;
-
 import java.util.Scanner;
 
 public class InputView {
