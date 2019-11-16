@@ -9,13 +9,8 @@ public class RacingCarGame {
 
     private RacingCars racingCars;
 
-    public boolean register(String rawCarNames) {
-        try {
-            racingCars = new RacingCars(convertRawCarNamesToCars(rawCarNames));
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
+    public void registerCar(String rawCarNames) {
+        racingCars = new RacingCars(convertRawCarNamesToCars(rawCarNames));
     }
 
     private List<Car> convertRawCarNamesToCars(String rawCarNames) {
