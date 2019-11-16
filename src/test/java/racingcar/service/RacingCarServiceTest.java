@@ -3,9 +3,9 @@ package racingcar.service;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.GameRound;
 import racingcar.domain.RacingCar;
 import racingcar.domain.RacingCars;
-import racingcar.domain.GameRound;
 import racingcar.exception.DuplicateCarsException;
 import racingcar.exception.LackOfCarsException;
 

@@ -57,13 +57,11 @@ public class RacingCarService {
         throw new NumberFormatException("정수로 입력해 주세요.");
     }
 
-    public RacingGameResult race(final RacingCars cars, final GameRound gameRound) {
-        MovingStrategy movingStrategy = new RandomMovingStrategy();
-
+    public RacingGameResult race(final RacingCars cars, final GameRound gameRound, final MovingStrategy movingStrategy) {
         RacingGameHistory history = new RacingGameHistory();
         for (int round = 0; round < gameRound.getRoundNum(); round++) {
             cars.move(movingStrategy);
-//            history.record(new GameRound(round), cars.clone());
+            history.record(new GameRound(round), new RacingCars(cars));
         }
         return new RacingGameResult(history);
     }

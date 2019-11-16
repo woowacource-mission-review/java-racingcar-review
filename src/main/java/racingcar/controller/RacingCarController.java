@@ -1,8 +1,9 @@
 package racingcar.controller;
 
-import racingcar.domain.RacingCars;
 import racingcar.domain.GameRound;
+import racingcar.domain.RacingCars;
 import racingcar.domain.RacingGameResult;
+import racingcar.domain.RandomMovingStrategy;
 import racingcar.service.RacingCarService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -19,7 +20,7 @@ public class RacingCarController {
             String round = InputView.inputGameRound();
             GameRound gameRound = racingCarService.createGameRound(round);
 
-            RacingGameResult result = racingCarService.race(cars, gameRound);
+            RacingGameResult result = racingCarService.race(cars, gameRound, new RandomMovingStrategy());
         } catch (IllegalArgumentException e) {
             OutputView.printExceptionMessageForPlayer(e);
         }

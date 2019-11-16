@@ -11,6 +11,13 @@ public class RacingCars {
         this.cars = cars;
     }
 
+    public RacingCars(RacingCars racingCars) {
+        this(new ArrayList<>());
+        for (RacingCar car : racingCars.cars) {
+            this.cars.add(new RacingCar(car));
+        }
+    }
+
     public RacingCar get(int index) {
         return cars.get(index);
     }

@@ -24,6 +24,10 @@ public class RacingCar {
         this.position = position;
     }
 
+    public RacingCar(RacingCar car) {
+        this(car.name.getName(), car.position);
+    }
+
     public void move(MovingStrategy movingStrategy) {
         if (movingStrategy.canMove()) {
             position++;
