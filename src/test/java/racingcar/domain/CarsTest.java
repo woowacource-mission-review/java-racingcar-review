@@ -18,6 +18,12 @@ class CarsTest {
     }
 
     @Test
+    void 이름_입력_2명_미만_예외처리() {
+        assertThrows(IllegalArgumentException.class, () -> new Cars("pobi"));
+
+    }
+
+    @Test
     void 전체_이동_테스트() {
         // given
         Cars cars = new Cars("pobi,crong,honux");

@@ -7,11 +7,15 @@ import java.util.stream.Stream;
 
 public class Cars {
     private static final String DELIMITER = ",";
+    private static final int MINIMUM_NAMES = 2;
 
     private final List<Car> cars;
 
     public Cars(final String names) {
         this.cars = createCars(names);
+        if (cars.size() < MINIMUM_NAMES) {
+            throw new IllegalArgumentException("2명 이상 입력해주세요.");
+        }
     }
 
     private List<Car> createCars(final String names) {
