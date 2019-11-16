@@ -8,6 +8,7 @@ public class RacingCarGame {
     public static final String CAR_NAME_DELIMITER = ",";
 
     private RacingCars racingCars;
+    private Round round;
 
     public void registerCar(String rawCarNames) {
         racingCars = new RacingCars(convertRawCarNamesToCars(rawCarNames));
@@ -18,5 +19,9 @@ public class RacingCarGame {
                 .map(String::trim)
                 .map(Car::new)
                 .collect(Collectors.toList());
+    }
+
+    public void registerRound(int round) {
+        this.round = new Round(round);
     }
 }

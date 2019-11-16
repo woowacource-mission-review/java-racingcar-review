@@ -1,6 +1,7 @@
 package model;
 
 import model.exception.CarCreateException;
+import model.exception.InvalidRoundException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -30,5 +31,17 @@ public class RacingCarGameTest {
     void register_only_commas_error() {
         String carNames = CAR_NAME_DELIMITER + CAR_NAME_DELIMITER;
         assertThrows(CarCreateException.class, () -> racingCarGame.registerCar(carNames));
+    }
+
+    @Test
+    @DisplayName("1이상 정수로 라운드 등록")
+    void register_round() {
+        assertDoesNotThrow(() -> racingCarGame.registerRound(1));
+    }
+
+    @Test
+    @DisplayName("1미만 정수로 라운드 등록시 에러 발생")
+    void register_over_1_round() {
+        assertThrows(InvalidRoundException.class, () -> racingCarGame.registerRound(0));
     }
 }
