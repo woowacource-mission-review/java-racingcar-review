@@ -43,4 +43,15 @@ class CarTest {
 
         assertThat(car1.equals(car2)).isTrue();
     }
+
+    @Test
+    void move() {
+        Car car1 = new Car("red", 0);
+        Car car2 = new Car("red", 0);
+        car1.move(() -> true);
+        car2.move(() -> false);
+
+        assertThat(car1.getPosition()).isEqualTo(1L);
+        assertThat(car2.getPosition()).isEqualTo(0L);
+    }
 }

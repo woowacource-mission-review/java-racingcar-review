@@ -44,4 +44,10 @@ public class Car {
     public int hashCode() {
         return Objects.hash(name);
     }
+
+    public void move(MovingStrategy movingStrategy) {
+        if (movingStrategy.canMove()) {
+            position++;
+        }
+    }
 }

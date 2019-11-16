@@ -7,18 +7,18 @@ import java.util.Objects;
 public class GameRound {
 
     public static final int MIN_NUM_OF_GAME_COUNT = 1;
-    private final long count;
+    private final long roundNum;
 
-    public GameRound(final long count) {
-        if (count < MIN_NUM_OF_GAME_COUNT) {
+    public GameRound(final long roundNum) {
+        if (roundNum < MIN_NUM_OF_GAME_COUNT) {
             throw new LackOfGameCountException();
         }
 
-        this.count = count;
+        this.roundNum = roundNum;
     }
 
-    public long getCount() {
-        return count;
+    public long getRoundNum() {
+        return roundNum;
     }
 
     @Override
@@ -26,11 +26,11 @@ public class GameRound {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         final GameRound gameRound = (GameRound) o;
-        return count == gameRound.count;
+        return roundNum == gameRound.roundNum;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(count);
+        return Objects.hash(roundNum);
     }
 }

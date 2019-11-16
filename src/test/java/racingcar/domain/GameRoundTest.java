@@ -14,7 +14,7 @@ class GameRoundTest {
     void createGameCount() {
         GameRound gameRound = new GameRound(3L);
 
-        assertThat(gameRound.getCount()).isEqualTo(3L);
+        assertThat(gameRound.getRoundNum()).isEqualTo(3L);
     }
 
     @Test

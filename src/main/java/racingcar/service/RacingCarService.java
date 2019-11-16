@@ -1,10 +1,7 @@
 package racingcar.service;
 
 import org.apache.commons.lang3.math.NumberUtils;
-import racingcar.domain.Car;
-import racingcar.domain.Cars;
-import racingcar.domain.GameRound;
-import racingcar.domain.RacingGameResult;
+import racingcar.domain.*;
 import racingcar.exception.DuplicateCarsException;
 import racingcar.exception.LackOfCarsException;
 
@@ -61,6 +58,13 @@ public class RacingCarService {
     }
 
     public RacingGameResult race(final Cars cars, final GameRound gameRound) {
-        return null;
+        MovingStrategy movingStrategy = new RandomMovingStrategy();
+
+        RacingGameHistory history = new RacingGameHistory();
+        for (int round = 0; round < gameRound.getRoundNum(); round++) {
+            cars.move(movingStrategy);
+//            history.record(new GameRound(round), cars.clone());
+        }
+        return new RacingGameResult(history);
     }
 }

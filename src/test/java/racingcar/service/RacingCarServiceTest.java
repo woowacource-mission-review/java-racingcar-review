@@ -49,7 +49,7 @@ class RacingCarServiceTest {
     void createGameCount() {
         GameRound gameRound = racingCarService.createGameRound("3");
 
-        assertThat(gameRound.getCount()).isEqualTo(3L);
+        assertThat(gameRound.getRoundNum()).isEqualTo(3L);
     }
 
     @Test
