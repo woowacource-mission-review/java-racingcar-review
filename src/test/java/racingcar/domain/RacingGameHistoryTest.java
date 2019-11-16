@@ -19,8 +19,8 @@ class RacingGameHistoryTest {
 
     @Test
     void record_and_read() {
-        List<Car> carList = Arrays.asList(new Car("red", 1), new Car("blue", 1), new Car("green", 0));
-        Cars cars = new Cars(carList);
+        List<RacingCar> carList = Arrays.asList(new RacingCar("red", 1), new RacingCar("blue", 1), new RacingCar("green", 0));
+        RacingCars cars = new RacingCars(carList);
 
         GameRound gameRound = new GameRound(1L);
         history.record(gameRound, cars);

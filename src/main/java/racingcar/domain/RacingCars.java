@@ -1,16 +1,17 @@
 package racingcar.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class Cars {
+public class RacingCars {
 
-    private final List<Car> cars;
+    private List<RacingCar> cars;
 
-    public Cars(final List<Car> cars) {
+    public RacingCars(final List<RacingCar> cars) {
         this.cars = cars;
     }
 
-    public Car get(int index) {
+    public RacingCar get(int index) {
         return cars.get(index);
     }
 
@@ -18,12 +19,12 @@ public class Cars {
         return cars.size();
     }
 
-    public boolean contains(final Car car) {
+    public boolean contains(final RacingCar car) {
         return cars.contains(car);
     }
 
     public void move(MovingStrategy movingStrategy) {
-        for (Car car : cars) {
+        for (RacingCar car : cars) {
             car.move(movingStrategy);
         }
     }

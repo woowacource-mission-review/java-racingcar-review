@@ -1,6 +1,6 @@
 package racingcar.controller;
 
-import racingcar.domain.Cars;
+import racingcar.domain.RacingCars;
 import racingcar.domain.GameRound;
 import racingcar.domain.RacingGameResult;
 import racingcar.service.RacingCarService;
@@ -14,7 +14,7 @@ public class RacingCarController {
     public void run() {
         try {
             String carNames = InputView.inputCarName();
-            Cars cars = racingCarService.createCarsByParsingWith(carNames);
+            RacingCars cars = racingCarService.createCarsByParsingWith(carNames);
 
             String round = InputView.inputGameRound();
             GameRound gameRound = racingCarService.createGameRound(round);

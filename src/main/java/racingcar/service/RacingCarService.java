@@ -16,13 +16,13 @@ public class RacingCarService {
     private static final String CAR_NAME_DELIMITER = ",";
     public static final int MIN_NUM_OF_RACING_CARS = 2;
 
-    public Cars createCarsByParsingWith(final String names) {
+    public RacingCars createCarsByParsingWith(final String names) {
         List<String> carNames = parseCarNames(names);
 
-        List<Car> cars = carNames.stream()
-                .map(Car::new)
+        List<RacingCar> cars = carNames.stream()
+                .map(RacingCar::new)
                 .collect(Collectors.toList());
-        return new Cars(cars);
+        return new RacingCars(cars);
     }
 
     private List<String> parseCarNames(final String names) {
@@ -57,7 +57,7 @@ public class RacingCarService {
         throw new NumberFormatException("정수로 입력해 주세요.");
     }
 
-    public RacingGameResult race(final Cars cars, final GameRound gameRound) {
+    public RacingGameResult race(final RacingCars cars, final GameRound gameRound) {
         MovingStrategy movingStrategy = new RandomMovingStrategy();
 
         RacingGameHistory history = new RacingGameHistory();

@@ -8,40 +8,40 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class CarsTest {
+class RacingCarsTest {
 
-    private List<Car> carList;
+    private List<RacingCar> carList;
 
     @BeforeEach
     void setUp() {
         carList = new ArrayList<>();
 
-        carList.add(new Car("red", 0));
-        carList.add(new Car("blue", 1));
-        carList.add(new Car("green", 1));
+        carList.add(new RacingCar("red", 0));
+        carList.add(new RacingCar("blue", 1));
+        carList.add(new RacingCar("green", 1));
     }
 
     @Test
     void size() {
-        Cars cars = new Cars(carList);
+        RacingCars cars = new RacingCars(carList);
 
         assertThat(cars.size()).isEqualTo(3);
     }
 
     @Test
     void contains() {
-        Cars cars = new Cars(carList);
+        RacingCars cars = new RacingCars(carList);
 
-        assertThat(cars.contains(new Car("red"))).isTrue();
-        assertThat(cars.contains(new Car("blue"))).isTrue();
-        assertThat(cars.contains(new Car("green"))).isTrue();
+        assertThat(cars.contains(new RacingCar("red"))).isTrue();
+        assertThat(cars.contains(new RacingCar("blue"))).isTrue();
+        assertThat(cars.contains(new RacingCar("green"))).isTrue();
 
-        assertThat(cars.contains(new Car("black"))).isFalse();
+        assertThat(cars.contains(new RacingCar("black"))).isFalse();
     }
 
     @Test
     void move() {
-        Cars cars = new Cars(carList);
+        RacingCars cars = new RacingCars(carList);
         cars.move(() -> true);
 
         assertThat(cars.get(0).getPosition()).isEqualTo(1L);
