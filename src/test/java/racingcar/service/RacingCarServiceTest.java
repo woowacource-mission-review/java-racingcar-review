@@ -5,7 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
-import racingcar.domain.GameCount;
+import racingcar.domain.GameRound;
 import racingcar.exception.DuplicateCarsException;
 import racingcar.exception.LackOfCarsException;
 
@@ -47,14 +47,19 @@ class RacingCarServiceTest {
     @Test
     @DisplayName("시도 횟수를 입력 받는 메소드")
     void createGameCount() {
-        GameCount gameCount = racingCarService.createGameCount("3");
+        GameRound gameRound = racingCarService.createGameRound("3");
 
-        assertThat(gameCount.getCount()).isEqualTo(3L);
+        assertThat(gameRound.getCount()).isEqualTo(3L);
     }
 
     @Test
     @DisplayName("정수 입력이 아닌 시도 횟수일 경우 예외 발생")
     void createGameCount_NumberFormatException() {
-        assertThrows(NumberFormatException.class, () -> racingCarService.createGameCount("a"));
+        assertThrows(NumberFormatException.class, () -> racingCarService.createGameRound("a"));
+    }
+
+    @Test
+    void race() {
+        // TODO: 16/11/2019 create test
     }
 }

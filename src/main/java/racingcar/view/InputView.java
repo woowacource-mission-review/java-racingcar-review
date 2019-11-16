@@ -14,7 +14,7 @@ public class InputView {
         return SCANNER.nextLine();
     }
 
-    public static String inputGameCount() {
+    public static String inputGameRound() {
         System.out.println("시도할 회수는 몇회인가요?");
         return SCANNER.nextLine();
     }
