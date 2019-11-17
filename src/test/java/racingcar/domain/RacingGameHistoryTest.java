@@ -19,13 +19,23 @@ class RacingGameHistoryTest {
 
     @Test
     void record_and_read() {
-        List<RacingCar> carList = Arrays.asList(new RacingCar("red", 1), new RacingCar("blue", 1), new RacingCar("green", 0));
+        RacingCar redCar = new RacingCar("red", 1);
+        RacingCar blueCar = new RacingCar("blue", 1);
+
+        List<RacingCar> carList = Arrays.asList(redCar, blueCar);
         RacingCars cars = new RacingCars(carList);
 
         GameRound gameRound = new GameRound(1L);
         history.record(gameRound, cars);
 
-        assertThat(history.read(gameRound)).isEqualTo(cars);
+        RacingCars readCars = history.read(gameRound);
+        RacingCar readRedCar = readCars.get(0);
+        RacingCar readBlueCar = readCars.get(1);
+
+        assertThat(readRedCar.equals(redCar)).isTrue();
+        assertThat(readRedCar.isSamePosition(redCar)).isTrue();
+        assertThat(readBlueCar.equals(blueCar)).isTrue();
+        assertThat(readBlueCar.isSamePosition(blueCar)).isTrue();
     }
 
     @Test

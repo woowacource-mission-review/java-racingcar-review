@@ -19,8 +19,11 @@ class RacingGameResultTest {
         List<RacingCar> carList = Arrays.asList(new RacingCar("red", 1), new RacingCar("blue", 1), new RacingCar("green", 0));
         RacingCars cars = new RacingCars(carList);
 
-        GameRound gameRound = new GameRound(1L);
-        history.record(gameRound, cars);
+        List<RacingCar> carList2 = Arrays.asList(new RacingCar("red", 2), new RacingCar("blue", 1), new RacingCar("green", 0));
+        RacingCars cars2 = new RacingCars(carList2);
+
+        history.record(new GameRound(1L), cars);
+        history.record(new GameRound(2L), cars2);
 
         result = new RacingGameResult(history);
     }
@@ -30,5 +33,8 @@ class RacingGameResultTest {
         RacingCars winners = result.findWinners();
 
         assertThat(winners).isNotNull();
+        assertThat(winners.contains(new RacingCar("red"))).isTrue();
+        assertThat(winners.contains(new RacingCar("blue"))).isFalse();
+        assertThat(winners.contains(new RacingCar("green"))).isFalse();
     }
 }
