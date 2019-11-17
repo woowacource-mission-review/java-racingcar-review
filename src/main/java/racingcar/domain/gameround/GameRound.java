@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.domain.gameround;
 
 import racingcar.exception.LackOfGameCountException;
 
@@ -6,10 +6,10 @@ import java.util.Objects;
 
 public class GameRound {
 
-    public static final int MIN_NUM_OF_GAME_ROUND = 1;
+    public static final long MIN_NUM_OF_GAME_ROUND = 1;
     private final long roundNum;
 
-    public GameRound(final long roundNum) {
+    GameRound(final long roundNum) {
         if (roundNum < MIN_NUM_OF_GAME_ROUND) {
             throw new LackOfGameCountException();
         }

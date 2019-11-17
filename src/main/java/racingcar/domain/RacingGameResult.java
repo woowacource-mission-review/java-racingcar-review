@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import racingcar.domain.car.RacingCars;
+import racingcar.domain.gameround.GameRoundPool;
 
 public class RacingGameResult {
 
@@ -11,7 +12,7 @@ public class RacingGameResult {
     }
 
     public RacingCars read(final long round) {
-        return history.read(new GameRound(round));
+        return history.read(GameRoundPool.of(round));
     }
 
     public long getNumOfGameRounds() {

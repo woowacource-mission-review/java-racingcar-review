@@ -3,10 +3,11 @@ package racingcar.service;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.GameRound;
 import racingcar.domain.RacingGameResult;
 import racingcar.domain.car.RacingCar;
 import racingcar.domain.car.RacingCars;
+import racingcar.domain.gameround.GameRound;
+import racingcar.domain.gameround.GameRoundPool;
 import racingcar.exception.DuplicateCarsException;
 import racingcar.exception.LackOfCarsException;
 
@@ -64,7 +65,7 @@ class RacingCarServiceTest {
     @Test
     void race() {
         RacingCars cars = new RacingCars(Arrays.asList(new RacingCar("red"), new RacingCar("blue")));
-        RacingGameResult result = racingCarService.race(cars, new GameRound(1), () -> true);
+        RacingGameResult result = racingCarService.race(cars, GameRoundPool.of(1), () -> true);
 
         assertThat(result).isNotNull();
     }

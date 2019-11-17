@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.car.RacingCar;
 import racingcar.domain.car.RacingCars;
+import racingcar.domain.gameround.GameRound;
+import racingcar.domain.gameround.GameRoundPool;
 
 import java.util.Arrays;
 import java.util.List;
@@ -27,7 +29,7 @@ class RacingGameHistoryTest {
         List<RacingCar> carList = Arrays.asList(redCar, blueCar);
         RacingCars cars = new RacingCars(carList);
 
-        GameRound gameRound = new GameRound(1L);
+        GameRound gameRound = GameRoundPool.of(1L);
         history.record(gameRound, cars);
 
         RacingCars readCars = history.read(gameRound);
@@ -47,7 +49,7 @@ class RacingGameHistoryTest {
         List<RacingCar> carList = Arrays.asList(new RacingCar("red", 1), new RacingCar("blue", 1), new RacingCar("green", 0));
         RacingCars cars = new RacingCars(carList);
 
-        GameRound gameRound = new GameRound(1L);
+        GameRound gameRound = GameRoundPool.of(1L);
         history.record(gameRound, cars);
 
         assertThat(history.getNumOfGameRounds()).isEqualTo(1L);

@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.car.RacingCar;
 import racingcar.domain.car.RacingCars;
+import racingcar.domain.gameround.GameRoundPool;
 
 import java.util.Arrays;
 import java.util.List;
@@ -24,8 +25,8 @@ class RacingGameResultTest {
         List<RacingCar> carList2 = Arrays.asList(new RacingCar("red", 2), new RacingCar("blue", 1), new RacingCar("green", 0));
         RacingCars cars2 = new RacingCars(carList2);
 
-        history.record(new GameRound(1L), cars);
-        history.record(new GameRound(2L), cars2);
+        history.record(GameRoundPool.of(1L), cars);
+        history.record(GameRoundPool.of(2L), cars2);
 
         result = new RacingGameResult(history);
     }

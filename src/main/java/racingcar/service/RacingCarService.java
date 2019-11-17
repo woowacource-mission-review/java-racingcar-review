@@ -1,12 +1,13 @@
 package racingcar.service;
 
 import org.apache.commons.lang3.math.NumberUtils;
-import racingcar.domain.GameRound;
-import racingcar.domain.movingstrategy.MovingStrategy;
 import racingcar.domain.RacingGameHistory;
 import racingcar.domain.RacingGameResult;
 import racingcar.domain.car.RacingCar;
 import racingcar.domain.car.RacingCars;
+import racingcar.domain.gameround.GameRound;
+import racingcar.domain.gameround.GameRoundPool;
+import racingcar.domain.movingstrategy.MovingStrategy;
 import racingcar.exception.DuplicateCarsException;
 import racingcar.exception.LackOfCarsException;
 
@@ -20,6 +21,7 @@ public class RacingCarService {
 
     private static final String CAR_NAME_DELIMITER = ",";
     public static final int MIN_NUM_OF_RACING_CARS = 2;
+    private static final String NUMBER_FORMAT_EXCEPTION_MESSAGE = "정수로 입력해 주세요.";
 
     public RacingCars createCarsByParsingWith(final String names) {
         List<String> carNames = parseCarNames(names);
@@ -32,7 +34,7 @@ public class RacingCarService {
 
     private List<String> parseCarNames(final String names) {
         String[] nameTokens = names.split(CAR_NAME_DELIMITER);
-        if (nameTokens.length < MIN_NUM_OF_RACING_CARS) {
+        if (isNotEnoughCars(nameTokens)) {
             throw new LackOfCarsException();
         }
 
@@ -41,6 +43,10 @@ public class RacingCarService {
             throw new DuplicateCarsException();
         }
         return carNames;
+    }
+
+    private boolean isNotEnoughCars(final String[] nameTokens) {
+        return nameTokens.length < MIN_NUM_OF_RACING_CARS;
     }
 
     private List<String> trim(final String[] nameTokens) {
@@ -55,18 +61,18 @@ public class RacingCarService {
         return names.size() != nameSet.size();
     }
 
-    public GameRound createGameRound(final String count) {
-        if (NumberUtils.isNumber(count)) {
-            return new GameRound(Integer.parseInt(count));
+    public GameRound createGameRound(final String round) {
+        if (NumberUtils.isNumber(round)) {
+            return GameRoundPool.of(Integer.parseInt(round));
         }
-        throw new NumberFormatException("정수로 입력해 주세요.");
+        throw new NumberFormatException(NUMBER_FORMAT_EXCEPTION_MESSAGE);
     }
 
     public RacingGameResult race(final RacingCars cars, final GameRound gameRound, final MovingStrategy movingStrategy) {
         RacingGameHistory history = new RacingGameHistory();
         for (int round = 1; round <= gameRound.getRoundNum(); round++) {
             cars.move(movingStrategy);
-            history.record(new GameRound(round), new RacingCars(cars));
+            history.record(GameRoundPool.of(round), new RacingCars(cars));
         }
         return new RacingGameResult(history);
     }

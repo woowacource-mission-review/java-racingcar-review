@@ -1,6 +1,6 @@
 package racingcar.exception;
 
-import racingcar.domain.GameRound;
+import racingcar.domain.gameround.GameRound;
 
 public class LackOfGameCountException extends IllegalArgumentException {
 

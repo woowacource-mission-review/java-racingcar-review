@@ -1,10 +1,10 @@
 package racingcar.view;
 
 import org.apache.commons.lang3.StringUtils;
-import racingcar.domain.GameRound;
 import racingcar.domain.RacingGameResult;
 import racingcar.domain.car.RacingCar;
 import racingcar.domain.car.RacingCars;
+import racingcar.domain.gameround.GameRound;
 import racingcar.utils.TimeUtils;
 
 import java.util.List;
@@ -31,7 +31,7 @@ public class OutputView {
         System.out.println();
         System.out.println(GAME_RESULT_MESSAGE);
 
-        for (int round = GameRound.MIN_NUM_OF_GAME_ROUND; round <= result.getNumOfGameRounds(); round++) {
+        for (long round = GameRound.MIN_NUM_OF_GAME_ROUND; round <= result.getNumOfGameRounds(); round++) {
             RacingCars cars = result.read(round);
             showResultOfOneRound(cars);
             System.out.println();
