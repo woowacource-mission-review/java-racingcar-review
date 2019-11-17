@@ -1,8 +1,9 @@
 package model;
 
 import model.exception.CarCreateException;
+import model.result.MoveResult;
 
-public class Car {
+public class Car implements Comparable<Car> {
     public static final int DEFAULT_POSITION = 0;
 
     private String name;
@@ -35,11 +36,23 @@ public class Car {
         }
     }
 
-    public int move(boolean moveFlag) {
-        return moveFlag ? ++position : position;
+    public MoveResult move(boolean moveFlag) {
+        if (moveFlag) {
+            return new MoveResult(name, ++position);
+        }
+        return new MoveResult(name, position);
     }
 
     public boolean matchPosition(int position) {
         return this.position == position;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public int compareTo(Car o) {
+        return Integer.compare(position, o.position);
     }
 }

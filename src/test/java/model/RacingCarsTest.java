@@ -1,6 +1,8 @@
 package model;
 
 import model.exception.CarCreateException;
+import model.result.MoveResult;
+import model.result.RoundResult;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,8 +12,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class RacingCarsTest {
     private MoveDeterminer trueDeterminer = new MoveDeterminer(new AlwaysTrueMoveStrategy());
@@ -62,5 +63,38 @@ public class RacingCarsTest {
         for (Car car : cars) {
             assertThat(car.matchPosition(0)).isTrue();
         }
+    }
+
+    @Test
+    @DisplayName("RoundResult 확인")
+    void check_round_results() {
+        RacingCars racingCars = new RacingCars(cars, trueDeterminer);
+        RoundResult roundResult = racingCars.moveCars();
+        assertTrue(roundResult.contains(new MoveResult("ABC", 1)));
+        assertTrue(roundResult.contains(new MoveResult("DEF", 1)));
+    }
+
+    @Test
+    @DisplayName("우승자 혼자일 때 확인")
+    void calculate_only_winner() {
+        Car winner = new Car("ABC", 2);
+        Car loser = new Car("DEF");
+        cars = Arrays.asList(winner, loser);
+        RacingCars racingCars = new RacingCars(cars, trueDeterminer);
+        racingCars.moveCars();
+        assertTrue(racingCars.calculateWinners().contains(winner));
+        assertFalse(racingCars.calculateWinners().contains(loser));
+    }
+
+    @Test
+    @DisplayName("우승자 여러명일 때 확인")
+    void calculate_multiple_winners() {
+        Car winner1 = new Car("ABC", 2);
+        Car winner2 = new Car("DEF", 2);
+        cars = Arrays.asList(winner1, winner2);
+        RacingCars racingCars = new RacingCars(cars, trueDeterminer);
+        racingCars.moveCars();
+        assertTrue(racingCars.calculateWinners().contains(winner1));
+        assertTrue(racingCars.calculateWinners().contains(winner2));
     }
 }

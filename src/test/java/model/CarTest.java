@@ -1,6 +1,7 @@
 package model;
 
 import model.exception.CarCreateException;
+import model.result.MoveResult;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -54,13 +55,13 @@ public class CarTest {
     @DisplayName("자동차 이동 성공시 위치 증가")
     void car_move_success() {
         Car car = new Car(CAR_NAME);
-        assertEquals(car.move(true), DEFAULT_POSITION + 1);
+        assertEquals(car.move(true), new MoveResult(CAR_NAME, DEFAULT_POSITION + 1));
     }
 
     @Test
     @DisplayName("자동차 이동 실패시 위치 동일한지")
     void car_move_failure() {
         Car car = new Car(CAR_NAME);
-        assertEquals(car.move(false), DEFAULT_POSITION);
+        assertEquals(car.move(false), new MoveResult(CAR_NAME, DEFAULT_POSITION));
     }
 }

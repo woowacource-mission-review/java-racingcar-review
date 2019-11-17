@@ -2,8 +2,13 @@ package model;
 
 import model.exception.CarCreateException;
 import model.exception.InvalidRegistrationException;
+import model.result.MoveResult;
+import model.result.RoundResult;
+import model.result.WinnerResult;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingCars {
     private List<Car> cars;
@@ -31,9 +36,21 @@ public class RacingCars {
         }
     }
 
-    public void moveCars() {
-        for (Car car : cars) {
-            car.move(moveDeterminer.determine());
-        }
+    public RoundResult moveCars() {
+        return new RoundResult(cars.stream()
+                .map(this::moveCar)
+                .collect(Collectors.toList()));
+    }
+
+    private MoveResult moveCar(Car car) {
+        return car.move(moveDeterminer.determine());
+    }
+
+    public WinnerResult calculateWinners() {
+        Car winner = Collections.max(cars);
+        return new WinnerResult(cars.stream()
+                .filter(car -> car.compareTo(winner) == 0)
+                .map(Car::getName)
+                .collect(Collectors.toList()));
     }
 }
