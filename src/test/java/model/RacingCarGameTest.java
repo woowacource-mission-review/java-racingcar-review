@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class RacingCarGameTest {
-    private RacingCarGame racingCarGame = new RacingCarGame();
+    private RacingCarGame racingCarGame = new RacingCarGame(new MoveDeterminer(new DefaultRandomMoveStrategy()));
 
     @Test
     @DisplayName("차 등록 성공")

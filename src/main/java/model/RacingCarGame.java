@@ -7,11 +7,16 @@ import java.util.stream.Collectors;
 public class RacingCarGame {
     public static final String CAR_NAME_DELIMITER = ",";
 
+    private MoveDeterminer moveDeterminer;
     private RacingCars racingCars;
     private Round round;
 
+    public RacingCarGame(MoveDeterminer moveDeterminer) {
+        this.moveDeterminer = moveDeterminer;
+    }
+
     public void registerCar(String rawCarNames) {
-        racingCars = new RacingCars(convertRawCarNamesToCars(rawCarNames));
+        racingCars = new RacingCars(convertRawCarNamesToCars(rawCarNames), moveDeterminer);
     }
 
     private List<Car> convertRawCarNamesToCars(String rawCarNames) {
