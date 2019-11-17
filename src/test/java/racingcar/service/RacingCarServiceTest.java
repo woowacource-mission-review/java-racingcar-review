@@ -6,8 +6,11 @@ import org.junit.jupiter.api.Test;
 import racingcar.domain.GameRound;
 import racingcar.domain.RacingCar;
 import racingcar.domain.RacingCars;
+import racingcar.domain.RacingGameResult;
 import racingcar.exception.DuplicateCarsException;
 import racingcar.exception.LackOfCarsException;
+
+import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -60,6 +63,9 @@ class RacingCarServiceTest {
 
     @Test
     void race() {
-        // TODO: 16/11/2019 create test
+        RacingCars cars = new RacingCars(Arrays.asList(new RacingCar("red"), new RacingCar("blue")));
+        RacingGameResult result = racingCarService.race(cars, new GameRound(1), () -> true);
+
+        assertThat(result).isNotNull();
     }
 }
