@@ -21,9 +21,9 @@ public class RacingCarController {
             GameRound gameRound = racingCarService.createGameRound(round);
 
             RacingGameResult result = racingCarService.race(cars, gameRound, new RandomMovingStrategy());
-            OutputView.show(result);
+            OutputView.showGameProcess(result);
         } catch (IllegalArgumentException e) {
-            OutputView.printExceptionMessageForPlayer(e);
+            OutputView.showExceptionMessageForPlayer(e);
         }
     }
 }

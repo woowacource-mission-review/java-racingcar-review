@@ -18,11 +18,11 @@ public class OutputView {
     private OutputView() {
     }
 
-    public static void printExceptionMessageForPlayer(final IllegalArgumentException e) {
+    public static void showExceptionMessageForPlayer(final IllegalArgumentException e) {
         System.out.println(ERROR_MESSAGE_PREFIX + e.getMessage());
     }
 
-    public static void show(final RacingGameResult result) {
+    public static void showGameProcess(final RacingGameResult result) {
         System.out.println();
         System.out.println(GAME_RESULT_MESSAGE);
 
