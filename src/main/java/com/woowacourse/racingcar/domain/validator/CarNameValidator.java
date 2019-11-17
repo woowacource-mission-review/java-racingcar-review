@@ -8,7 +8,7 @@ public class CarNameValidator {
 
     private static final int MAX_CAR_NAME_LENGTH = 5;
 
-    public static boolean isValid(String carName) {
+    public static boolean check(String carName) {
         if (isBlank(carName)) {
             throw new BlankCarNameException();
         }

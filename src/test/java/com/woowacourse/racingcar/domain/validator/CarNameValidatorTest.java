@@ -14,20 +14,20 @@ public class CarNameValidatorTest {
     @DisplayName("올바른 이름")
     void check_car_name() {
         String name = "aaa";
-        assertTrue(CarNameValidator.isValid(name));
+        assertTrue(CarNameValidator.check(name));
     }
 
     @Test
     @DisplayName("공백 이름 검사")
     void check_car_name_with_blank() {
         String name = "";
-        assertThrows(BlankCarNameException.class,() -> CarNameValidator.isValid(name));
+        assertThrows(BlankCarNameException.class, () -> CarNameValidator.check(name));
     }
 
     @Test
     @DisplayName("이름 5글자 넘는 경우 검사")
     void check_car_name_length() {
-        String name="conasCONASconas";
-        assertThrows(InvalidCarNameException.class, () -> CarNameValidator.isValid(name));
+        String name = "conasCONASconas";
+        assertThrows(InvalidCarNameException.class, () -> CarNameValidator.check(name));
     }
 }

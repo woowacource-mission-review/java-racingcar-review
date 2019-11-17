@@ -14,20 +14,20 @@ class CarsNameValidatorTest {
     @DisplayName("올바른 자동차 이름 입력")
     void checkNames() {
         String carNames = "aaa,bbb,ccc";
-        assertDoesNotThrow(() -> CarNamesValidator.isValid(carNames));
+        assertDoesNotThrow(() -> CarsNameValidator.check(carNames));
     }
 
     @Test
     @DisplayName("중복된 이름 검사")
     void checkNames_name_over_flow() {
         String carNames = "aaa,aaa";
-        assertThrows(DuplicateCarNameException.class, () -> CarNamesValidator.isValid(carNames));
+        assertThrows(DuplicateCarNameException.class, () -> CarsNameValidator.check(carNames));
     }
 
     @Test
     @DisplayName("자동차 수 2대 이상이 아닌 경우")
     void checkNames_invalid_size() {
         String carNames = "aaa";
-        assertThrows(InvalidCarsSizeException.class, () -> CarNamesValidator.isValid(carNames));
+        assertThrows(InvalidCarsSizeException.class, () -> CarsNameValidator.check(carNames));
     }
 }

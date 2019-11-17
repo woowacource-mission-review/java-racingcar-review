@@ -4,12 +4,12 @@ import com.google.common.collect.Sets;
 import com.woowacourse.racingcar.domain.exception.DuplicateCarNameException;
 import com.woowacourse.racingcar.domain.exception.InvalidCarsSizeException;
 
-public class CarNamesValidator {
+public class CarsNameValidator {
 
     private static final int MIN_CAR_SIZE = 2;
     private static final String CAR_NAME_DELIMITER = ",";
 
-    public static boolean isValid(final String carNamesWithComma) {
+    public static boolean check(final String carNamesWithComma) {
         String[] cars = carNamesWithComma.split(CAR_NAME_DELIMITER);
         if (hasDuplicatedName(cars)) {
             throw new DuplicateCarNameException();
