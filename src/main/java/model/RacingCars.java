@@ -32,7 +32,9 @@ public class RacingCars {
     }
 
     private void validateDuplicateNames(List<Car> cars) {
-        Set<String> carNames = cars.stream().map(Car::getName).collect(Collectors.toSet());
+        Set<String> carNames = cars.stream()
+                .map(Car::getName)
+                .collect(Collectors.toSet());
         if (carNames.size() != cars.size()) {
             throw new InvalidRegistrationException("자동차의 이름이 중복됩니다.");
         }
