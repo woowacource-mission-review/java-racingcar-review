@@ -19,7 +19,7 @@ public class Car {
         }
     }
 
-    public boolean isSamePosition(int position){
+    public boolean isSamePosition(int position) {
         return getPosition() == position;
     }
 
