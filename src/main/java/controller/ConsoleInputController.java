@@ -1,7 +1,9 @@
 package controller;
 
 import domain.Cars;
+import domain.Round;
 import domain.exception.CarNameLengthExcessException;
+import domain.exception.InvalidRoundNumberException;
 import domain.factory.CarsFactory;
 import support.CarNameUtils;
 import support.DuplicatedCarNameException;
@@ -25,14 +27,15 @@ public class ConsoleInputController {
         }
     }
 
-    public Integer getNumberOfAttempts() {
+    public Round getRound() {
         System.out.println("시도할 회수는 몇회인가요?");
+        String inputRound = scanner.nextLine();
 
         try {
-            return scanner.nextInt();
-        } catch (Exception e) {
+            return new Round(inputRound);
+        } catch (InvalidRoundNumberException e) {
             System.out.println(e.getMessage());
-            return getNumberOfAttempts();
+            return getRound();
         }
     }
 }

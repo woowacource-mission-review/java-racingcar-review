@@ -1,6 +1,7 @@
 import controller.ConsoleInputController;
 import controller.ConsoleOutputController;
 import domain.Cars;
+import domain.Round;
 import domain.Winners;
 import domain.factory.WinnersFactory;
 import domain.strategy.RandomMoveStrategy;
@@ -11,8 +12,8 @@ public class racingGame {
         ConsoleOutputController outputController = new ConsoleOutputController();
 
         Cars cars = inputController.getCars();
-        Integer numberOfAttempts = inputController.getNumberOfAttempts();
-        for (Integer i = 0; i < numberOfAttempts; i++) {
+        Round round = inputController.getRound();
+        for (Integer i = 0; i < round.getNumber(); i++) {
             cars.moveAll(new RandomMoveStrategy());
             outputController.drawOneStep(cars);
         }
