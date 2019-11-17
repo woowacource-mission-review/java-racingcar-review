@@ -24,6 +24,9 @@ class RacingGameTest {
         List<String> carNames = Lists.newArrayList("moomin", "baedi", "comac", "JM", "EZ");
         RacingGame racingGame = new RacingGame(carNames, () -> true);
         racingGame.proceed();
-        assertThat(racingGame.getCars().stream().filter(car -> car.getPosition() == 1).count()).isEqualTo(carNames.size());
+        assertThat(racingGame.getCars()
+                .stream()
+                .filter(car -> car.getPosition() == 1).count())
+                .isEqualTo(carNames.size());
     }
 }
