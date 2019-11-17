@@ -31,7 +31,7 @@ public class CarTest {
     void can_move_car() {
         Car car = new Car(name);
         assertThat(car.getPosition()).isEqualTo(0);
-        car.move(4);
+        car.move(new ForwardMoveStrategy());
         assertThat(car.getPosition()).isEqualTo(1);
     }
 }
