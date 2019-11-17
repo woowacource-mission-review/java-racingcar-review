@@ -1,4 +1,6 @@
 public class CarName {
+    private final static Integer MAX_NAME_LENGTH = 5;
+
     private final String name;
 
     public CarName(String name) {
@@ -7,7 +9,7 @@ public class CarName {
     }
 
     private void validateName(String name) {
-        if (name.length() > 5) {
+        if (name.length() > MAX_NAME_LENGTH) {
             throw new CarNameLengthExcessException();
         }
     }
