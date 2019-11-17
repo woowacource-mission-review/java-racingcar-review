@@ -8,6 +8,10 @@ public class Cars {
         this.cars = cars;
     }
 
+    public void moveAll(MoveStrategy moveStrategy) {
+        cars.forEach(car -> car.move(moveStrategy));
+    }
+
     public int getMaxPosition() {
         return cars.stream()
                 .map(Car::getPosition)
@@ -21,5 +25,9 @@ public class Cars {
                 .filter(car -> car.getPosition().equals(this.getMaxPosition()))
                 .collect(Collectors.toList())
                 ;
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 }
