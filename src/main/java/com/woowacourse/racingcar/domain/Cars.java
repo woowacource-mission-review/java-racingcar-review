@@ -1,5 +1,7 @@
 package com.woowacourse.racingcar.domain;
 
+import com.woowacourse.racingcar.domain.moveStrategy.CarMoveStrategy;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -9,6 +11,14 @@ public class Cars {
 
     public Cars(final List<Car> cars) {
         this.cars = cars;
+    }
+
+    public void moveCars(CarMoveStrategy moveStrategy) {
+        cars.forEach(car -> car.move(moveStrategy));
+    }
+
+    public int getPositionOf(int index) {
+        return cars.get(index).getPosition();
     }
 
     @Override
