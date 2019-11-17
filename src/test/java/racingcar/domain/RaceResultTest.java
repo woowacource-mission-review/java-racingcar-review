@@ -29,4 +29,11 @@ class RaceResultTest {
 
         assertThat(winners).isEqualTo(expected);
     }
+
+    @Test
+    void IteratorTest() {
+        assertThat(raceResult.next()).isEqualTo(cars1);
+        assertThat(raceResult.next()).isEqualTo(cars2);
+        assertThat(raceResult.hasNext()).isFalse();
+    }
 }
