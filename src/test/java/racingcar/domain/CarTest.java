@@ -11,12 +11,12 @@ class CarTest {
 
     @Test
     @DisplayName("이동 안함")
-    void moveTest1() {
+    void shouldMoveTest1() {
         // given
         int expected = car.getPosition();
 
         // when
-        car.move(x -> false);
+        car.shouldMove(x -> false);
         int actual = car.getPosition();
 
         // then
@@ -25,12 +25,12 @@ class CarTest {
 
     @Test
     @DisplayName("이동")
-    void moveTest2() {
+    void shouldMoveTest2() {
         // given
         int expected = car.getPosition()+1;
 
         // when
-        car.move(x -> true);
+        car.shouldMove(x -> true);
         int actual = car.getPosition();
 
         // then

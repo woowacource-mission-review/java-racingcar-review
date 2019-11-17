@@ -31,7 +31,7 @@ class CarsTest {
         List<Integer> expectedPosition = List.of(movedPosition, movedPosition, movedPosition);
 
         // when
-        cars.move(x -> true);
+        cars.shouldMove(x -> true);
         List<Integer> actualPositions = cars.getCars().stream()
                 .map(Car::getPosition)
                 .collect(Collectors.toList());
@@ -44,8 +44,8 @@ class CarsTest {
     void 우승자_구하기() {
         // given
         Cars cars = new Cars("pobi,crong,honux");
-        cars.move(car -> car.getName().equals("pobi"));
-        cars.move(car -> car.getName().equals("crong"));
+        cars.shouldMove(car -> car.getName().equals("pobi"));
+        cars.shouldMove(car -> car.getName().equals("crong"));
 
         // when
         List<String> winners = cars.getWinners();

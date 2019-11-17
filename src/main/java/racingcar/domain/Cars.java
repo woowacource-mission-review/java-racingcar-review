@@ -24,8 +24,8 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-    public void move(final MoveStrategy moveStrategy) {
-        cars.forEach(car -> car.move(moveStrategy));
+    public void shouldMove(final MoveStrategy moveStrategy) {
+        cars.forEach(car -> car.shouldMove(moveStrategy));
     }
 
     public List<Car> getCars() {
