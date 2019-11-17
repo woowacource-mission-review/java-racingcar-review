@@ -16,6 +16,14 @@ class NameTest {
     }
 
     @Test
+    void 이름_공백_처리() {
+        final Name name1 = Name.of(" 12345 ");
+        final Name name2 = Name.of("12345");
+
+        assertThat(name1).isEqualTo(name2);
+    }
+
+    @Test
     void 이름_2자_미만_예외처리() {
         assertThrows(IllegalArgumentException.class, () -> Name.of("a"));
     }

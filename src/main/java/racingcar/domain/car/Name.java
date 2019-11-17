@@ -9,10 +9,14 @@ public class Name {
     private final String name;
 
     private Name(final String name) {
-        if (name.length() > MAX_BOUNDARY || name.length() < MIN_BOUNDARY) {
-            throw new IllegalArgumentException("이름은 2~5자로 해주세요.");
+        this.name = name.trim();
+        validateLengthOfName();
+    }
+
+    private void validateLengthOfName() {
+        if (this.name.length() > MAX_BOUNDARY || this.name.length() < MIN_BOUNDARY) {
+            throw new IllegalArgumentException(String.format("이름은 %d~%d자로 해주세요.", MIN_BOUNDARY, MAX_BOUNDARY));
         }
-        this.name = name;
     }
 
     static Name of(final String name) {
