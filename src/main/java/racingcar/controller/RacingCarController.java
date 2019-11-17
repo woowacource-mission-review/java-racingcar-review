@@ -22,6 +22,8 @@ public class RacingCarController {
 
             RacingGameResult result = racingCarService.race(cars, gameRound, new RandomMovingStrategy());
             OutputView.showGameProcess(result);
+
+            OutputView.showWinners(result);
         } catch (IllegalArgumentException e) {
             OutputView.showExceptionMessageForPlayer(e);
         }

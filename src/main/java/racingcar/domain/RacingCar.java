@@ -5,7 +5,7 @@ import racingcar.exception.ExcessOfCarNameLengthException;
 
 import java.util.Objects;
 
-public class RacingCar {
+public class RacingCar implements Comparable<RacingCar> {
 
     public static final int MIN_OF_CAR_NAME_LENGTH = 5;
     private final Name name;
@@ -35,6 +35,10 @@ public class RacingCar {
         }
     }
 
+    public boolean isSamePosition(RacingCar car) {
+        return compareTo(car) == 0;
+    }
+
     public String getAlignedName() {
         return StringUtils.rightPad(name.getName(), MIN_OF_CAR_NAME_LENGTH);
     }
@@ -45,6 +49,11 @@ public class RacingCar {
 
     public long getPosition() {
         return position;
+    }
+
+    @Override
+    public int compareTo(final RacingCar car) {
+        return Long.compare(this.position, car.position);
     }
 
     @Override

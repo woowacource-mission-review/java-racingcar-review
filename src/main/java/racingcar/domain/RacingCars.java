@@ -1,7 +1,11 @@
 package racingcar.domain;
 
+import racingcar.exception.WinnerNotFoundException;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class RacingCars {
 
@@ -34,5 +38,24 @@ public class RacingCars {
         for (RacingCar car : cars) {
             car.move(movingStrategy);
         }
+    }
+
+    public RacingCars findWinners() {
+        RacingCar winner = findOneWinner();
+        List<RacingCar> carList = cars.stream()
+                .filter(winner::isSamePosition)
+                .collect(Collectors.toList());
+
+        return new RacingCars(carList);
+    }
+
+    private RacingCar findOneWinner() {
+        return cars.stream()
+                .max(RacingCar::compareTo)
+                .orElseThrow(WinnerNotFoundException::new);
+    }
+
+    public Stream<RacingCar> stream() {
+        return cars.stream();
     }
 }

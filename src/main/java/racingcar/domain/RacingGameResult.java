@@ -15,4 +15,11 @@ public class RacingGameResult {
     public long getNumOfGameRounds() {
         return history.getNumOfGameRounds();
     }
+
+    public RacingCars findWinners() {
+        long numOfGameRounds = history.getNumOfGameRounds();
+        RacingCars cars = read(numOfGameRounds);
+
+        return cars.findWinners();
+    }
 }

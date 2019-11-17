@@ -77,4 +77,25 @@ class RacingCarTest {
         assertThat(blueCar.getAlignedName()).isEqualTo("blue ");
         assertThat(greenCar.getAlignedName()).isEqualTo("green");
     }
+
+    @Test
+    void compareTo() {
+        RacingCar redCar = new RacingCar("red", 1);
+        RacingCar blueCar = new RacingCar("blue", 2);
+        RacingCar greenCar = new RacingCar("green", 1);
+
+        assertThat(redCar).isLessThan(blueCar);
+        assertThat(blueCar).isGreaterThan(redCar);
+        assertThat(redCar).isEqualByComparingTo(greenCar);
+    }
+
+    @Test
+    void isSamePosition() {
+        RacingCar redCar = new RacingCar("red", 1);
+        RacingCar blueCar = new RacingCar("blue", 1);
+        RacingCar greenCar = new RacingCar("green", 2);
+
+        assertThat(redCar.isSamePosition(blueCar)).isTrue();
+        assertThat(redCar.isSamePosition(greenCar)).isFalse();
+    }
 }
