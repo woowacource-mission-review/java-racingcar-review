@@ -19,7 +19,7 @@ public class RacingGame {
 
         while (nowGameNumber.isNotEquals(gameNumber)) {
             cars.moveCars(moveStrategy);
-            result.addResult(new Cars(cars));
+            result.addResult(Cars.from(cars));
             nowGameNumber.plusOne();
         }
         return result;

@@ -1,18 +1,19 @@
 package com.woowacourse.racingcar.domain;
 
-import com.google.common.collect.Lists;
 import com.woowacourse.racingcar.domain.moveStrategy.CarMoveStrategy;
 import com.woowacourse.racingcar.domain.validator.CarsNameValidator;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
 
 public class Cars {
 
     private static final String CARS_NAME_DELIMITER = ",";
+    public static final int FIRST_INDEX = 0;
     private final List<Car> cars;
 
     public Cars(final String carNameWithComma) {
@@ -20,9 +21,14 @@ public class Cars {
         this.cars = initCars(carNameWithComma);
     }
 
-    public Cars(final Cars cars) {
-        this.cars= Lists.newArrayList();
-        cars.getCars().forEach(car -> this.cars.add(new Car(car.getName())));
+    private Cars(final List<Car> cars) {
+        this.cars = cars;
+    }
+
+    public static Cars from(Cars cars) {
+        List<Car> args = cars.cars.stream().map(Car::from)
+            .collect(Collectors.toList());
+        return new Cars(args);
     }
 
     private static List<Car> initCars(final String carNameWithComma) {
@@ -51,6 +57,20 @@ public class Cars {
 
     public Car get(int index) {
         return cars.get(index);
+    }
+
+    public List<Car> findWinners() {
+        int maxPosition = findWinnerPosition();
+        return cars.stream().filter(car -> car.isWinner(maxPosition))
+            .collect(Collectors.toList());
+    }
+
+    private int findWinnerPosition() {
+        int maxPosition = 0;
+        for (Car car : cars) {
+            maxPosition = car.farThan(maxPosition) ? car.getPosition() : maxPosition;
+        }
+        return maxPosition;
     }
 
     @Override

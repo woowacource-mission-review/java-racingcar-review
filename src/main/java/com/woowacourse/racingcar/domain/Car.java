@@ -8,11 +8,21 @@ import java.util.Objects;
 public class Car {
 
     private final String name;
-    private int position = 0;
+    private int position;
 
     public Car(final String name) {
         CarNameValidator.check(name);
         this.name = name;
+        this.position = 0;
+    }
+
+    private Car(final String name, final int position) {
+        this.name = name;
+        this.position = position;
+    }
+
+    public static Car from(Car car) {
+        return new Car(car.name, car.position);
     }
 
     public String getName() {
@@ -23,10 +33,18 @@ public class Car {
         return position;
     }
 
-    public void move(CarMoveStrategy moveStrategy) {
+    public void move(final CarMoveStrategy moveStrategy) {
         if (moveStrategy.canMove()) {
             this.position++;
         }
+    }
+
+    public boolean farThan(final int position) {
+        return this.position > position;
+    }
+
+    public boolean isWinner(final int maxPosition) {
+        return position == maxPosition;
     }
 
     @Override

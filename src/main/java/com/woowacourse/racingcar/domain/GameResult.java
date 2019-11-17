@@ -6,6 +6,7 @@ import java.util.List;
 
 public class GameResult {
 
+    private static final int ONE = 1;
     private List<Cars> result;
 
     public GameResult() {
@@ -22,5 +23,10 @@ public class GameResult {
 
     public int getSize() {
         return result.size();
+    }
+
+    public List<Car> getWinners() {
+        int lastIndex = result.size() - ONE;
+        return result.get(lastIndex).findWinners();
     }
 }
