@@ -54,4 +54,15 @@ class RacingCarTest {
         assertThat(car1.getPosition()).isEqualTo(1L);
         assertThat(car2.getPosition()).isEqualTo(0L);
     }
+
+    @Test
+    @DisplayName("새로운 생성자로 생성할 경우 깊은 복사가 되는지 테스트")
+    void deepCopyConstructor() {
+        RacingCar car = new RacingCar("red", 1);
+        RacingCar copiedCar = new RacingCar(car);
+
+        car.move(() -> true);
+
+        assertThat(copiedCar.getPosition()).isEqualTo(1L);
+    }
 }
