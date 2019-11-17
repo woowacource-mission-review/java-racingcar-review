@@ -2,7 +2,7 @@ package com.woowacourse.racingcar.domain.validator;
 
 import com.google.common.collect.Sets;
 import com.woowacourse.racingcar.domain.exception.DuplicateCarNameException;
-import com.woowacourse.racingcar.domain.exception.InvalidCarSizeException;
+import com.woowacourse.racingcar.domain.exception.InvalidCarsSizeException;
 
 public class CarNamesValidator {
 
@@ -15,7 +15,7 @@ public class CarNamesValidator {
             throw new DuplicateCarNameException();
         }
         if (isValidSize(cars)) {
-            throw new InvalidCarSizeException();
+            throw new InvalidCarsSizeException();
         }
         return true;
     }
