@@ -1,3 +1,8 @@
+package domain;
+
+import domain.exception.CarsEmptyException;
+import domain.strategy.MoveStrategy;
+
 import java.util.List;
 import java.util.stream.Collectors;
 

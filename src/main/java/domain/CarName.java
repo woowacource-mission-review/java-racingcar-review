@@ -1,3 +1,7 @@
+package domain;
+
+import domain.exception.CarNameLengthExcessException;
+
 public class CarName {
     private final static Integer MAX_NAME_LENGTH = 5;
 

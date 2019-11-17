@@ -1,3 +1,10 @@
+package controller;
+
+import domain.Car;
+import domain.Cars;
+import domain.Winner;
+import domain.Winners;
+
 import java.util.stream.Collectors;
 
 public class ConsoleOutputController {
@@ -20,8 +27,7 @@ public class ConsoleOutputController {
     public void drawWinners(Winners winners) {
         String gameResult = winners.getWinners().stream()
                 .map(Winner::getWinnerName)
-                .collect(Collectors.joining(", "))
-                ;
+                .collect(Collectors.joining(", "));
 
         System.out.println("[" + gameResult + "]" + "가(이) 최종 우승했습니다.");
     }

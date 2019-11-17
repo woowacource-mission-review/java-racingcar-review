@@ -1,3 +1,10 @@
+import controller.ConsoleInputController;
+import controller.ConsoleOutputController;
+import domain.Cars;
+import domain.Winners;
+import domain.factory.WinnersFactory;
+import domain.strategy.RandomMoveStrategy;
+
 public class racingGame {
     public static void main(String[] args) {
         ConsoleInputController inputController = new ConsoleInputController();

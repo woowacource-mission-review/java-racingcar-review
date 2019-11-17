@@ -1,3 +1,7 @@
+package domain;
+
+import domain.factory.WinnersFactory;
+import domain.strategy.ForwardMoveStrategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

@@ -1,3 +1,5 @@
+package support;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -10,8 +12,7 @@ public class CarNameUtils {
     public static List<String> parse(String inputNames) {
         List<String> carNames = Stream.of(inputNames.split(DELIMITER))
                 .map(String::trim)
-                .collect(Collectors.toList())
-                ;
+                .collect(Collectors.toList());
 
         if (isDuplicated(carNames)) {
             throw new DuplicatedCarNameException();

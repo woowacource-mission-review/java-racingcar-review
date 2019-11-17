@@ -1,3 +1,7 @@
+package domain;
+
+import domain.strategy.MoveStrategy;
+
 import java.util.Objects;
 
 public class Car {
