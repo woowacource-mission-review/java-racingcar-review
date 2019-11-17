@@ -15,8 +15,12 @@ public class Cars {
 
     public Cars(final String names) {
         this.cars = createCars(names);
+        validateCarSize();
+    }
+
+    private void validateCarSize() {
         if (cars.size() < MINIMUM_NAMES) {
-            throw new IllegalArgumentException("2명 이상 입력해주세요.");
+            throw new IllegalArgumentException(MINIMUM_NAMES + "명 이상 입력해주세요.");
         }
     }
 

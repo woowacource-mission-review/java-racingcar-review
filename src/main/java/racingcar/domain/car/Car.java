@@ -15,14 +15,10 @@ public class Car {
         return new Car(name);
     }
 
-    public void shouldMove(final MoveStrategy moveStrategy) {
+    void shouldMove(final MoveStrategy moveStrategy) {
         if (moveStrategy.isAvailableMove(this)) {
             position = position.increase();
         }
-    }
-
-    public boolean isSamePosition(int position) {
-        return getPosition() == position;
     }
 
     public String getName() {

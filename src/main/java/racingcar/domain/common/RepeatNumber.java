@@ -7,7 +7,7 @@ public class RepeatNumber {
 
     public RepeatNumber(final int number) {
         if (number < NUMBER_BOUNDARY) {
-            throw new IllegalArgumentException("1 이상 입력해주세요.");
+            throw new IllegalArgumentException(NUMBER_BOUNDARY + " 이상 입력해주세요.");
         }
         this.number = number;
     }
