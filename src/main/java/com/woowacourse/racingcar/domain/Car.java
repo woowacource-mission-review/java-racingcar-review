@@ -1,5 +1,6 @@
 package com.woowacourse.racingcar.domain;
 
+import com.woowacourse.racingcar.domain.moveStrategy.CarMoveStrategy;
 import com.woowacourse.racingcar.domain.validator.CarNameValidator;
 
 import java.util.Objects;
@@ -12,6 +13,16 @@ public class Car {
     public Car(final String name) {
         CarNameValidator.check(name);
         this.name = name;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void move(CarMoveStrategy moveStrategy) {
+        if (moveStrategy.canMove()) {
+            this.position++;
+        }
     }
 
     @Override
