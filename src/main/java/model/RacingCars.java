@@ -7,6 +7,7 @@ import model.result.WinnerResult;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class RacingCars {
@@ -26,6 +27,14 @@ public class RacingCars {
         }
         if (cars.size() < 2) {
             throw new InvalidRegistrationException("자동차 경주를 위해 두 대 이상의 자동차가 필요합니다.");
+        }
+        validateDuplicateNames(cars);
+    }
+
+    private void validateDuplicateNames(List<Car> cars) {
+        Set<String> carNames = cars.stream().map(Car::getName).collect(Collectors.toSet());
+        if (carNames.size() != cars.size()) {
+            throw new InvalidRegistrationException("자동차의 이름이 중복됩니다.");
         }
     }
 

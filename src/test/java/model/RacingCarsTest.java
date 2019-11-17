@@ -46,6 +46,20 @@ public class RacingCarsTest {
     }
 
     @Test
+    @DisplayName("생성자에 1개의 자동차 리스트 입력")
+    void register_singleton_list() {
+        assertThrows(InvalidRegistrationException.class,
+                () -> new RacingCars(Collections.singletonList(new Car("ABC")), trueDeterminer));
+    }
+
+    @Test
+    @DisplayName("생성자에 중복된 자동차 이름 리스트 입력")
+    void register_duplicated_name_list() {
+        assertThrows(InvalidRegistrationException.class,
+                () -> new RacingCars(Arrays.asList(new Car("ABC"), new Car("ABC")), trueDeterminer));
+    }
+
+    @Test
     @DisplayName("MoveDeterminer가 true를 리턴할 때 움직이는지")
     void if_determiner_return_true_move() {
         RacingCars racingCars = new RacingCars(cars, trueDeterminer);

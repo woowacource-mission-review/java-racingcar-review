@@ -36,6 +36,20 @@ public class RacingCarGameTest {
     }
 
     @Test
+    @DisplayName("하나의 이름으로 차 등록시 에러 발생")
+    void register_one_name_error() {
+        String carNames = "ABC";
+        assertThrows(InvalidRegistrationException.class, () -> racingCarGame.registerCar(carNames));
+    }
+
+    @Test
+    @DisplayName("중복된 이름으로 차 등록시 에러 발생")
+    void register_duplicated_name_error() {
+        String carNames = "ABC,ABC";
+        assertThrows(InvalidRegistrationException.class, () -> racingCarGame.registerCar(carNames));
+    }
+
+    @Test
     @DisplayName("1이상 정수로 라운드 등록")
     void register_round() {
         assertDoesNotThrow(() -> racingCarGame.registerRound(MIN_ROUND));
