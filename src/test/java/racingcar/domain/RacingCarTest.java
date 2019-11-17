@@ -65,4 +65,16 @@ class RacingCarTest {
 
         assertThat(copiedCar.getPosition()).isEqualTo(1L);
     }
+
+    @Test
+    @DisplayName("공백으로 글자수가 채워진 이름 리턴")
+    void getAlignedName() {
+        RacingCar redCar = new RacingCar("red");
+        RacingCar blueCar = new RacingCar("blue");
+        RacingCar greenCar = new RacingCar("green");
+
+        assertThat(redCar.getAlignedName()).isEqualTo("red  ");
+        assertThat(blueCar.getAlignedName()).isEqualTo("blue ");
+        assertThat(greenCar.getAlignedName()).isEqualTo("green");
+    }
 }

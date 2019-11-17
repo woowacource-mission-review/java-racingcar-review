@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import org.apache.commons.lang3.StringUtils;
 import racingcar.exception.ExcessOfCarNameLengthException;
 
 import java.util.Objects;
@@ -32,6 +33,10 @@ public class RacingCar {
         if (movingStrategy.canMove()) {
             position++;
         }
+    }
+
+    public String getAlignedName() {
+        return StringUtils.rightPad(name.getName(), MIN_OF_CAR_NAME_LENGTH);
     }
 
     public String getName() {

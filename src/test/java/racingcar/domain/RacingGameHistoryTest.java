@@ -27,4 +27,17 @@ class RacingGameHistoryTest {
 
         assertThat(history.read(gameRound)).isEqualTo(cars);
     }
+
+    @Test
+    void getNumOfGameRounds() {
+        assertThat(history.getNumOfGameRounds()).isEqualTo(0L);
+
+        List<RacingCar> carList = Arrays.asList(new RacingCar("red", 1), new RacingCar("blue", 1), new RacingCar("green", 0));
+        RacingCars cars = new RacingCars(carList);
+
+        GameRound gameRound = new GameRound(1L);
+        history.record(gameRound, cars);
+
+        assertThat(history.getNumOfGameRounds()).isEqualTo(1L);
+    }
 }

@@ -13,6 +13,10 @@ public class RacingGameHistory {
     }
 
     public RacingCars read(final GameRound gameRound) {
-        return history.get(gameRound);
+        return new RacingCars(history.get(gameRound));
+    }
+
+    public long getNumOfGameRounds() {
+        return history.keySet().size();
     }
 }
