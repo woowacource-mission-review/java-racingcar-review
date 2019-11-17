@@ -70,7 +70,7 @@ public class RacingCarService {
 
     public RacingGameResult race(final RacingCars cars, final GameRound gameRound, final MovingStrategy movingStrategy) {
         RacingGameHistory history = new RacingGameHistory();
-        for (int round = 1; round <= gameRound.getRoundNum(); round++) {
+        for (long round = GameRound.MIN_NUM_OF_GAME_ROUND; round <= gameRound.getRoundNum(); round++) {
             cars.move(movingStrategy);
             history.record(GameRoundPool.of(round), new RacingCars(cars));
         }
