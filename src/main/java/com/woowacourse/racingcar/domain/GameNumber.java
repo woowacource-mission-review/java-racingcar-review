@@ -1,13 +1,28 @@
 package com.woowacourse.racingcar.domain;
 
+import com.woowacourse.racingcar.domain.validator.GameNumberValidator;
+
 import java.util.Objects;
 
 public class GameNumber {
 
-    private final int gameNumber;
+    private int gameNumber;
 
     public GameNumber(final int gameNumber) {
+        GameNumberValidator.check(gameNumber);
         this.gameNumber = gameNumber;
+    }
+
+    public int getNumber() {
+        return this.gameNumber;
+    }
+
+    public void plusOne() {
+        this.gameNumber++;
+    }
+
+    public boolean isNotEquals(final GameNumber gameNumber) {
+        return this.gameNumber != gameNumber.gameNumber;
     }
 
     @Override
@@ -22,4 +37,6 @@ public class GameNumber {
     public int hashCode() {
         return Objects.hash(gameNumber);
     }
+
+
 }
