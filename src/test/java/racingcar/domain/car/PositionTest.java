@@ -15,4 +15,12 @@ class PositionTest {
 
         assertThat(actual).isEqualTo(DEFAULT_POSITION + 1);
     }
+
+    @Test
+    void 캐싱_확인_테스트() {
+        Position position1 = Position.newInstance();
+        Position position2 = Position.newInstance();
+
+        assertThat(position1 == position2).isTrue();
+    }
 }
