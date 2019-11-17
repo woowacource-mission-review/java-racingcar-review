@@ -8,4 +8,12 @@ public class GameResult {
         this.roundResults = roundResults;
         this.winnerResult = winnerResult;
     }
+
+    public RoundResults getRoundResults() {
+        return roundResults;
+    }
+
+    public WinnerResult getWinnerResult() {
+        return winnerResult;
+    }
 }

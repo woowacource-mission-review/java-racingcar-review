@@ -1,5 +1,6 @@
 package model;
 
+import model.exception.InvalidRegistrationException;
 import model.result.GameResult;
 import model.result.RoundResults;
 
@@ -18,8 +19,9 @@ public class RacingCarGame {
         this.moveDeterminer = moveDeterminer;
     }
 
-    public void registerCar(String rawCarNames) {
+    public boolean registerCar(String rawCarNames) {
         racingCars = new RacingCars(convertRawCarNamesToCars(rawCarNames), moveDeterminer);
+        return true;
     }
 
     private List<Car> convertRawCarNamesToCars(String rawCarNames) {
@@ -29,15 +31,26 @@ public class RacingCarGame {
                 .collect(Collectors.toList());
     }
 
-    public void registerRound(int round) {
+    public boolean registerRound(int round) {
         this.round = new Round(round);
+        return true;
     }
 
     public GameResult startGame() {
+        checkRegistration();
         RoundResults roundResults = new RoundResults();
         for (Integer integer : round) {
             roundResults.addRoundResult(racingCars.moveCars());
         }
         return new GameResult(roundResults, racingCars.calculateWinners());
+    }
+
+    private void checkRegistration() {
+        if (racingCars == null) {
+            throw new InvalidRegistrationException("자동차 이름을 입력해주세요.");
+        }
+        if (round == null) {
+            throw new InvalidRegistrationException("라운드를 입력해주세요.");
+        }
     }
 }

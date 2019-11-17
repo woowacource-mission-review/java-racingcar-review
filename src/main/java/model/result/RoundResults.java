@@ -11,12 +11,12 @@ public class RoundResults implements Iterable<RoundResult> {
         roundResults.add(roundResult);
     }
 
+    public RoundResult getRoundResult(int round) {
+        return roundResults.get(round - 1);
+    }
+
     @Override
     public Iterator<RoundResult> iterator() {
         return roundResults.iterator();
-    }
-
-    public RoundResult getRoundResult(int round) {
-        return roundResults.get(round - 1);
     }
 }
