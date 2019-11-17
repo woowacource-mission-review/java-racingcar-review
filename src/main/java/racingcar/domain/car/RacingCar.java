@@ -1,6 +1,7 @@
-package racingcar.domain;
+package racingcar.domain.car;
 
 import org.apache.commons.lang3.StringUtils;
+import racingcar.domain.movingstrategy.MovingStrategy;
 import racingcar.exception.ExcessOfCarNameLengthException;
 
 import java.util.Objects;

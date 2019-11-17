@@ -2,9 +2,9 @@ package racingcar.view;
 
 import org.apache.commons.lang3.StringUtils;
 import racingcar.domain.GameRound;
-import racingcar.domain.RacingCar;
-import racingcar.domain.RacingCars;
 import racingcar.domain.RacingGameResult;
+import racingcar.domain.car.RacingCar;
+import racingcar.domain.car.RacingCars;
 import racingcar.utils.TimeUtils;
 
 import java.util.List;

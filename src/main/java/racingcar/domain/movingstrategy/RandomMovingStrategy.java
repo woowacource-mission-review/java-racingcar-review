@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.domain.movingstrategy;
 
 public class RandomMovingStrategy implements MovingStrategy {
 

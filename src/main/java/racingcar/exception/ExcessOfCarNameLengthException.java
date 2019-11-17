@@ -1,6 +1,6 @@
 package racingcar.exception;
 
-import racingcar.domain.RacingCar;
+import racingcar.domain.car.RacingCar;
 
 public class ExcessOfCarNameLengthException extends IllegalArgumentException {
 

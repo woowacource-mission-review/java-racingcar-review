@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import com.google.common.collect.Maps;
+import racingcar.domain.car.RacingCars;
 
 import java.util.Map;
 

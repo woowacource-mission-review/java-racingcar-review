@@ -1,9 +1,9 @@
 package racingcar.controller;
 
 import racingcar.domain.GameRound;
-import racingcar.domain.RacingCars;
 import racingcar.domain.RacingGameResult;
-import racingcar.domain.RandomMovingStrategy;
+import racingcar.domain.movingstrategy.RandomMovingStrategy;
+import racingcar.domain.car.RacingCars;
 import racingcar.service.RacingCarService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;

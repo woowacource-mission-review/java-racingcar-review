@@ -1,5 +1,6 @@
-package racingcar.domain;
+package racingcar.domain.car;
 
+import racingcar.domain.movingstrategy.MovingStrategy;
 import racingcar.exception.WinnerNotFoundException;
 
 import java.util.ArrayList;

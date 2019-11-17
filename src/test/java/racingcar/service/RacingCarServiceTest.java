@@ -4,9 +4,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.GameRound;
-import racingcar.domain.RacingCar;
-import racingcar.domain.RacingCars;
 import racingcar.domain.RacingGameResult;
+import racingcar.domain.car.RacingCar;
+import racingcar.domain.car.RacingCars;
 import racingcar.exception.DuplicateCarsException;
 import racingcar.exception.LackOfCarsException;
 

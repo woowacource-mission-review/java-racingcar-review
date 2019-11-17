@@ -1,7 +1,12 @@
 package racingcar.service;
 
 import org.apache.commons.lang3.math.NumberUtils;
-import racingcar.domain.*;
+import racingcar.domain.GameRound;
+import racingcar.domain.movingstrategy.MovingStrategy;
+import racingcar.domain.RacingGameHistory;
+import racingcar.domain.RacingGameResult;
+import racingcar.domain.car.RacingCar;
+import racingcar.domain.car.RacingCars;
 import racingcar.exception.DuplicateCarsException;
 import racingcar.exception.LackOfCarsException;
 

@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.domain.car.RacingCars;
+
 public class RacingGameResult {
 
     private final RacingGameHistory history;
