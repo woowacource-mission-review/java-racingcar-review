@@ -2,10 +2,10 @@ package model;
 
 import java.util.Random;
 
-public class RandomDigitGenerator {
+class RandomDigitGenerator {
     private Random random = new Random();
 
-    public int getRandomDigit() {
+    int getRandomDigit() {
         return random.nextInt(10);
     }
 }

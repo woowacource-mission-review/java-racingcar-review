@@ -8,7 +8,7 @@ public class MoveDeterminer {
         this.moveStrategy = moveStrategy;
     }
 
-    public boolean determine() {
+    boolean determine() {
         return moveStrategy.canMove(generator.getRandomDigit());
     }
 }
