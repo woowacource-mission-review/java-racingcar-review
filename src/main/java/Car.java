@@ -13,8 +13,8 @@ public class Car {
         }
     }
 
-    public CarName getName() {
-        return name;
+    public String getName() {
+        return name.getName();
     }
 
     public Integer getPosition() {
