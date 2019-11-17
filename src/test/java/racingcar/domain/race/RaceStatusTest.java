@@ -2,11 +2,14 @@ package racingcar.domain.race;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.exception.RaceStatusEmptyException;
 import racingcar.service.dto.CarDto;
 
+import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class RaceStatusTest {
 
@@ -25,5 +28,11 @@ class RaceStatusTest {
         // then
         assertThat(winners).hasSize(1);
         assertThat(winners.get(0).getName()).isEqualTo("first");
+    }
+
+    @Test
+    @DisplayName("carDtos 가 비어있는 경우 예외처리")
+    void RaceStatusEmptyException() {
+        assertThrows(RaceStatusEmptyException.class, () -> RaceStatus.from(Collections.emptyList()));
     }
 }

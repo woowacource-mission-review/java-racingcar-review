@@ -8,8 +8,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Cars {
+    public static final int MINIMUM_NAMES = 2;
     private static final String DELIMITER = ",";
-    private static final int MINIMUM_NAMES = 2;
 
     private final List<Car> cars;
 
