@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,14 +25,10 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-    public void shouldMove(final MoveStrategy moveStrategy) {
+    public List<Car> shouldMove(final MoveStrategy moveStrategy) {
         cars.forEach(car -> car.shouldMove(moveStrategy));
+        return Collections.unmodifiableList(cars);
     }
-
-    public List<Car> getCars() {
-        return cars;
-    }
-
 
     public List<String> getWinners() {
         int maxOfPosition = cars.stream()

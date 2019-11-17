@@ -31,8 +31,8 @@ class CarsTest {
         List<Integer> expectedPosition = List.of(movedPosition, movedPosition, movedPosition);
 
         // when
-        cars.shouldMove(x -> true);
-        List<Integer> actualPositions = cars.getCars().stream()
+        final List<Car> movedCars = cars.shouldMove(x -> true);
+        List<Integer> actualPositions = movedCars.stream()
                 .map(Car::getPosition)
                 .collect(Collectors.toList());
 
