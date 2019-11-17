@@ -6,4 +6,8 @@ public class Winners {
     public Winners(List<Winner> winners) {
         this.winners = winners;
     }
+
+    public List<Winner> getWinners() {
+        return winners;
+    }
 }
