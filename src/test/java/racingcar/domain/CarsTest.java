@@ -39,18 +39,4 @@ class CarsTest {
         // then
         assertThat(actualPositions).isEqualTo(expectedPosition);
     }
-
-    @Test
-    void 우승자_구하기() {
-        // given
-        Cars cars = new Cars("pobi,crong,honux");
-        cars.shouldMove(car -> car.getName().equals("pobi"));
-        cars.shouldMove(car -> car.getName().equals("crong"));
-
-        // when
-        List<String> winners = cars.getWinners();
-
-        // then
-        assertThat(winners).isEqualTo(List.of("pobi", "crong"));
-    }
 }
