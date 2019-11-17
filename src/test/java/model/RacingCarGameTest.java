@@ -1,13 +1,15 @@
 package model;
 
 import model.exception.CarCreateException;
+import model.exception.InvalidRegistrationException;
 import model.exception.InvalidRoundException;
+import model.result.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static model.RacingCarGame.CAR_NAME_DELIMITER;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static model.Round.MIN_ROUND;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class RacingCarGameTest {
     private RacingCarGame racingCarGame = new RacingCarGame(new MoveDeterminer(new DefaultRandomMoveStrategy()));
@@ -30,18 +32,38 @@ public class RacingCarGameTest {
     @DisplayName("Comma만 있는 String으로 차 등록시 에러 발생")
     void register_only_commas_error() {
         String carNames = CAR_NAME_DELIMITER + CAR_NAME_DELIMITER;
-        assertThrows(CarCreateException.class, () -> racingCarGame.registerCar(carNames));
+        assertThrows(InvalidRegistrationException.class, () -> racingCarGame.registerCar(carNames));
     }
 
     @Test
     @DisplayName("1이상 정수로 라운드 등록")
     void register_round() {
-        assertDoesNotThrow(() -> racingCarGame.registerRound(1));
+        assertDoesNotThrow(() -> racingCarGame.registerRound(MIN_ROUND));
     }
 
     @Test
     @DisplayName("1미만 정수로 라운드 등록시 에러 발생")
     void register_over_1_round() {
-        assertThrows(InvalidRoundException.class, () -> racingCarGame.registerRound(0));
+        assertThrows(InvalidRoundException.class, () -> racingCarGame.registerRound(MIN_ROUND - 1));
+    }
+
+    @Test
+    @DisplayName("게임 결과 확인")
+    void game_result() {
+        racingCarGame = new RacingCarGame(new MoveDeterminer(new AlwaysTrueMoveStrategy()));
+        racingCarGame.registerCar("ABC,DEF");
+        racingCarGame.registerRound(2);
+        GameResult gameResult = racingCarGame.startGame();
+
+        WinnerResult winnerResult = gameResult.getWinnerResult();
+        assertTrue(winnerResult.contains(new Car("ABC")));
+        assertTrue(winnerResult.contains(new Car("DEF")));
+
+        RoundResults roundResults = gameResult.getRoundResults();
+        int position = 1;
+        for (RoundResult roundResult : roundResults) {
+            assertTrue(roundResult.contains(new MoveResult("ABC", position)));
+            assertTrue(roundResult.contains(new MoveResult("DEF", position++)));
+        }
     }
 }

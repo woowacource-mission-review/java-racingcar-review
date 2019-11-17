@@ -1,6 +1,5 @@
 package model;
 
-import model.exception.CarCreateException;
 import model.exception.InvalidRegistrationException;
 import model.result.MoveResult;
 import model.result.RoundResult;
@@ -23,10 +22,10 @@ public class RacingCars {
 
     private void validateCars(List<Car> cars) {
         if (cars == null) {
-            throw new CarCreateException("자동차에 NULL을 등록할 수 없습니다.");
+            throw new InvalidRegistrationException("자동차에 NULL을 등록할 수 없습니다.");
         }
-        if (cars.size() == 0) {
-            throw new CarCreateException("차 이름을 입력해주세요.");
+        if (cars.size() < 2) {
+            throw new InvalidRegistrationException("자동차 경주를 위해 두 대 이상의 자동차가 필요합니다.");
         }
     }
 

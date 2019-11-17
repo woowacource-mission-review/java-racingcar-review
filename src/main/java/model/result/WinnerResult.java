@@ -16,11 +16,6 @@ public class WinnerResult implements Iterable<String> {
         return winnerNames.contains(car.getName());
     }
 
-    public List<String> getWinnerNames() {
-        return winnerNames;
-    }
-
-
     @Override
     public Iterator<String> iterator() {
         return winnerNames.iterator();

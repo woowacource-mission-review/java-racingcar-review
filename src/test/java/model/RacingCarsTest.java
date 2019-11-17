@@ -1,6 +1,6 @@
 package model;
 
-import model.exception.CarCreateException;
+import model.exception.InvalidRegistrationException;
 import model.result.MoveResult;
 import model.result.RoundResult;
 import org.junit.jupiter.api.BeforeEach;
@@ -34,14 +34,14 @@ public class RacingCarsTest {
     @Test
     @DisplayName("생성자 파라미터에 NULL 입력")
     void register_null() {
-        assertThrows(CarCreateException.class,
+        assertThrows(InvalidRegistrationException.class,
                 () -> new RacingCars(null, trueDeterminer));
     }
 
     @Test
     @DisplayName("생성자에 빈 리스트 입력")
     void register_empty_list() {
-        assertThrows(CarCreateException.class,
+        assertThrows(InvalidRegistrationException.class,
                 () -> new RacingCars(Collections.emptyList(), trueDeterminer));
     }
 
