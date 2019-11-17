@@ -1,6 +1,6 @@
 package racingcar.service.dto;
 
-import racingcar.domain.Car;
+import racingcar.domain.car.Car;
 
 import java.util.Objects;
 

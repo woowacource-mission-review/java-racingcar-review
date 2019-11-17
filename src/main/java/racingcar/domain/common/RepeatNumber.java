@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.domain.common;
 
 public class RepeatNumber {
     private static final int NUMBER_BOUNDARY = 1;

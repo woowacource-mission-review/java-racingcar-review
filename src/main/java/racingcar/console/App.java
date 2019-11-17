@@ -2,10 +2,10 @@ package racingcar.console;
 
 import racingcar.console.view.InputView;
 import racingcar.console.view.OutputView;
-import racingcar.domain.Cars;
-import racingcar.domain.MoveStrategy;
-import racingcar.domain.RaceResult;
-import racingcar.domain.RandomNumberMoveStrategy;
+import racingcar.domain.car.Cars;
+import racingcar.domain.movestrategy.MoveStrategy;
+import racingcar.domain.movestrategy.RandomNumberMoveStrategy;
+import racingcar.domain.race.RaceResult;
 import racingcar.service.RacingService;
 
 public class App {

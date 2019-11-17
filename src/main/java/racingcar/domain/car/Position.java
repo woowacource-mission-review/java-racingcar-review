@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.domain.car;
 
 public class Position {
     private static final int UNIT_INCREASE = 1;

@@ -1,6 +1,6 @@
 package racingcar.console.view;
 
-import racingcar.domain.RaceResult;
+import racingcar.domain.race.RaceResult;
 import racingcar.service.dto.CarDto;
 
 import java.util.List;

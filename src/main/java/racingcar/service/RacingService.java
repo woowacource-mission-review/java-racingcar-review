@@ -1,6 +1,11 @@
 package racingcar.service;
 
-import racingcar.domain.*;
+import racingcar.domain.car.Car;
+import racingcar.domain.car.Cars;
+import racingcar.domain.common.RepeatNumber;
+import racingcar.domain.movestrategy.MoveStrategy;
+import racingcar.domain.race.RaceResult;
+import racingcar.domain.race.RaceStatus;
 import racingcar.service.dto.CarDto;
 
 import java.util.ArrayList;

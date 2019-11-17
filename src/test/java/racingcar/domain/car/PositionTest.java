@@ -1,9 +1,9 @@
-package racingcar.domain;
+package racingcar.domain.car;
 
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static racingcar.domain.Position.DEFAULT_POSITION;
+import static racingcar.domain.car.Position.DEFAULT_POSITION;
 
 class PositionTest {
 

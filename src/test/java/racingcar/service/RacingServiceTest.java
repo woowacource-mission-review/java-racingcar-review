@@ -3,8 +3,8 @@ package racingcar.service;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.Cars;
-import racingcar.domain.RaceResult;
+import racingcar.domain.car.Cars;
+import racingcar.domain.race.RaceResult;
 import racingcar.service.dto.CarDto;
 
 import java.util.List;
