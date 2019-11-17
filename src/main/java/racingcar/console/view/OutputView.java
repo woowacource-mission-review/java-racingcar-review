@@ -17,20 +17,21 @@ public class OutputView {
         StringBuilder sb = new StringBuilder();
         sb.append("실행 결과\n");
         while (raceResult.hasNext()) {
-            printCurrentRace(raceResult, sb);
+            printCurrentRace(raceResult.next(), sb);
         }
         System.out.println(sb.toString());
     }
 
-    private static void printCurrentRace(final RaceResult raceResult, final StringBuilder sb) {
-        final List<CarDto> carDtos = raceResult.next();
-        carDtos.forEach(carDto -> {
-            sb.append(String.format("%s : ", carDto.getName()));
-            for (int i = 0; i < carDto.getPosition(); i++) {
-                sb.append(ROUTE);
-            }
-            sb.append("\n");
-        });
+    private static void printCurrentRace(final List<CarDto> carDtos, final StringBuilder sb) {
+        carDtos.forEach(carDto -> printCar(sb, carDto));
+        sb.append("\n");
+    }
+
+    private static void printCar(final StringBuilder sb, final CarDto carDto) {
+        sb.append(String.format("%s : ", carDto.getName()));
+        for (int i = 0; i < carDto.getPosition(); i++) {
+            sb.append(ROUTE);
+        }
         sb.append("\n");
     }
 
