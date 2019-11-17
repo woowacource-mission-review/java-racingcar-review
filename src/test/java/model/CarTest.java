@@ -52,6 +52,12 @@ public class CarTest {
     }
 
     @Test
+    @DisplayName("자동차 이름이 5자 초과일 경우 차 생성에러")
+    void car_create_over_5_length_name() {
+        assertThrows(CarCreateException.class, () -> new Car("ABCDEF"));
+    }
+
+    @Test
     @DisplayName("자동차 이동 성공시 위치 증가")
     void car_move_success() {
         Car car = new Car(CAR_NAME);

@@ -4,6 +4,7 @@ import model.exception.CarCreateException;
 import model.result.MoveResult;
 
 public class Car implements Comparable<Car> {
+    private static final int CAR_NAME_MAX_LENGTH = 5;
     public static final int DEFAULT_POSITION = 0;
 
     private String name;
@@ -22,6 +23,7 @@ public class Car implements Comparable<Car> {
     private void validateName(String name) {
         validateNull(name);
         validateEmpty(name);
+        validateLength(name);
     }
 
     private void validateNull(String name) {
@@ -33,6 +35,12 @@ public class Car implements Comparable<Car> {
     private void validateEmpty(String name) {
         if ("".equals(name)) {
             throw new CarCreateException("차 이름에 비어있는 문자열을 입력할 수 없습니다.");
+        }
+    }
+
+    private void validateLength(String name) {
+        if (name.length() > CAR_NAME_MAX_LENGTH) {
+            throw new CarCreateException("차 이름은 5자 이하이어야합니다.");
         }
     }
 
