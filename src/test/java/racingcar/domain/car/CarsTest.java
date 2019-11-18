@@ -7,9 +7,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class CarsTest {
+
+    @Test
+    void 정상_이름_입력_성공() {
+        assertDoesNotThrow(()-> new Cars("pobi, crong, pol"));
+    }
 
     @Test
     @DisplayName(",가 아닌 다른 delimiter를 사용한 경우")
