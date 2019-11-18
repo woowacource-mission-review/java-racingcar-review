@@ -15,7 +15,7 @@ public class Car {
         return new Car(name);
     }
 
-    void shouldMove(final MoveStrategy moveStrategy) {
+    void tryMove(final MoveStrategy moveStrategy) {
         if (moveStrategy.isAvailableMove(this)) {
             position = position.increase();
         }

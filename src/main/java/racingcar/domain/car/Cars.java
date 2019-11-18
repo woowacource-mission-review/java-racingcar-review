@@ -30,8 +30,8 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-    public List<Car> shouldMove(final MoveStrategy moveStrategy) {
-        cars.forEach(car -> car.shouldMove(moveStrategy));
+    public List<Car> tryMove(final MoveStrategy moveStrategy) {
+        cars.forEach(car -> car.tryMove(moveStrategy));
         return Collections.unmodifiableList(cars);
     }
 }

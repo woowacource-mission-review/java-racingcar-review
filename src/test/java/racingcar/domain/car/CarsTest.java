@@ -37,7 +37,7 @@ class CarsTest {
         List<Integer> expectedPosition = List.of(movedPosition, movedPosition, movedPosition);
 
         // when
-        final List<Car> movedCars = cars.shouldMove(x -> true);
+        final List<Car> movedCars = cars.tryMove(x -> true);
         List<Integer> actualPositions = movedCars.stream()
                 .map(Car::getPosition)
                 .collect(Collectors.toList());

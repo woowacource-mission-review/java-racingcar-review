@@ -28,7 +28,7 @@ public class RacingService {
 
         final List<RaceStatus> raceStatuses = new ArrayList<>();
         for (int i = 0; i < repeatNumber.getNumber(); i++) {
-            final List<Car> movedCars = cars.shouldMove(moveStrategy);
+            final List<Car> movedCars = cars.tryMove(moveStrategy);
             final List<CarDto> carDtos = movedCars.stream().map(CarDto::from).collect(Collectors.toList());
             raceStatuses.add(new RaceStatus(carDtos));
         }

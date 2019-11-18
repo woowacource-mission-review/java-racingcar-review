@@ -23,7 +23,7 @@ class RacingServiceTest {
 
     @Test
     void createCarsTest() {
-        assertThat(cars.shouldMove(x -> true)).isNotEmpty();
+        assertThat(cars.tryMove(x -> true)).isNotEmpty();
     }
 
     @Test
