@@ -13,7 +13,7 @@ class PositionTest {
         Position increasedPosition = position.increase();
         int actual = increasedPosition.getPosition();
 
-        assertThat(actual).isEqualTo(DEFAULT_POSITION + 1);
+        assertThat(actual).isEqualTo(DEFAULT_POSITION + Position.UNIT_INCREASE);
     }
 
     @Test

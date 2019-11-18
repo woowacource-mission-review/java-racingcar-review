@@ -27,7 +27,7 @@ class CarsTest {
     void 전체_이동_테스트() {
         // given
         Cars cars = new Cars("pobi,crong,honux");
-        int movedPosition = Position.DEFAULT_POSITION + 1;
+        int movedPosition = Position.DEFAULT_POSITION + Position.UNIT_INCREASE;
         List<Integer> expectedPosition = List.of(movedPosition, movedPosition, movedPosition);
 
         // when

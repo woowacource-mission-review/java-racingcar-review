@@ -27,7 +27,7 @@ class CarTest {
     @DisplayName("이동")
     void shouldMoveTest2() {
         // given
-        int expected = car.getPosition() + 1;
+        int expected = car.getPosition() + Position.UNIT_INCREASE;
 
         // when
         car.shouldMove(x -> true);

@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Position {
     private static final int DEFAULT_CACHE_SIZE = 30;
-    private static final int UNIT_INCREASE = 1;
+    static final int UNIT_INCREASE = 1;
     static final int DEFAULT_POSITION = 0;
 
     private static final Map<Integer, Position> CACHE = new HashMap<>();
