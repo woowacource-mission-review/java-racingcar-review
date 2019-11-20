@@ -24,6 +24,11 @@ class NameTest {
     }
 
     @Test
+    void NULL_검사() {
+        assertThrows(NullPointerException.class, () -> Name.of(null));
+    }
+
+    @Test
     void 이름_2자_미만_예외처리() {
         assertThrows(IllegalArgumentException.class, () -> Name.of("a"));
     }

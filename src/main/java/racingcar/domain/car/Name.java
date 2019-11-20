@@ -9,7 +9,7 @@ public class Name {
     private final String name;
 
     private Name(final String name) {
-        this.name = name.trim();
+        this.name = Objects.requireNonNull(name.trim());
         validateLengthOfName();
     }
 
