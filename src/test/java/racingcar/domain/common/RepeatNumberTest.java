@@ -26,4 +26,9 @@ class RepeatNumberTest {
     void 문자로_숫자_입력_변환_처리() {
         assertDoesNotThrow(() -> RepeatNumber.from("67"));
     }
+
+    @Test
+    void NULL_검사() {
+        assertThrows(NullPointerException.class, () -> RepeatNumber.from(null));
+    }
 }
