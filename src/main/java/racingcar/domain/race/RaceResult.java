@@ -1,6 +1,6 @@
 package racingcar.domain.race;
 
-import racingcar.service.dto.CarDto;
+import racingcar.domain.car.Car;
 
 import java.util.Iterator;
 import java.util.List;
@@ -14,7 +14,7 @@ public class RaceResult implements Iterator {
         this.cursor = 0;
     }
 
-    public List<CarDto> getWinners() {
+    public List<Car> getWinners() {
         final int lastIndex = raceStatuses.size() - 1;
         return raceStatuses.get(lastIndex).getCurrentWinners();
     }
@@ -25,8 +25,8 @@ public class RaceResult implements Iterator {
     }
 
     @Override
-    public List<CarDto> next() {
-        final List<CarDto> currentRaceStatus = raceStatuses.get(cursor).getCurrentRaceStatus();
+    public List<Car> next() {
+        final List<Car> currentRaceStatus = raceStatuses.get(cursor).getCurrentRaceStatus();
         cursor++;
         return currentRaceStatus;
     }

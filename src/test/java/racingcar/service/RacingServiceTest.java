@@ -3,9 +3,9 @@ package racingcar.service;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.car.Car;
 import racingcar.domain.car.Cars;
 import racingcar.domain.race.RaceResult;
-import racingcar.service.dto.CarDto;
 
 import java.util.List;
 
@@ -29,7 +29,7 @@ class RacingServiceTest {
     @Test
     @DisplayName("경주 후 우승자 구하기")
     void startRaceTest1() {
-        List<CarDto> expected = List.of(new CarDto("pobi", 3), new CarDto("crong", 3));
+        List<Car> expected = List.of(Car.of("pobi", 3), Car.of("crong", 3));
         int repeatNumber = 3;
 
         RaceResult raceResult = racingService.startRace(repeatNumber, cars);
@@ -41,8 +41,8 @@ class RacingServiceTest {
     @DisplayName("경주 후 상태 확인")
     void startRaceTest2() {
         // given
-        List<CarDto> expected1 = List.of(new CarDto("pobi", 1), new CarDto("crong", 1));
-        List<CarDto> expected2 = List.of(new CarDto("pobi", 2), new CarDto("crong", 2));
+        List<Car> expected1 = List.of(Car.of("pobi", 1), Car.of("crong", 1));
+        List<Car> expected2 = List.of(Car.of("pobi", 2), Car.of("crong", 2));
 
         // when
         RaceResult raceResult = racingService.startRace(2, cars);

@@ -6,11 +6,9 @@ import racingcar.domain.common.RepeatNumber;
 import racingcar.domain.movestrategy.MoveStrategy;
 import racingcar.domain.race.RaceResult;
 import racingcar.domain.race.RaceStatus;
-import racingcar.service.dto.CarDto;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingService {
     private final MoveStrategy moveStrategy;
@@ -29,8 +27,7 @@ public class RacingService {
         final List<RaceStatus> raceStatuses = new ArrayList<>();
         for (int i = 0; i < repeatNumber.getNumber(); i++) {
             final List<Car> movedCars = cars.tryMove(moveStrategy);
-            final List<CarDto> carDtos = movedCars.stream().map(CarDto::from).collect(Collectors.toList());
-            raceStatuses.add(new RaceStatus(carDtos));
+            raceStatuses.add(new RaceStatus(movedCars));
         }
 
         return new RaceResult(raceStatuses);

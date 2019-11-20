@@ -2,24 +2,43 @@ package racingcar.domain.car;
 
 import racingcar.domain.movestrategy.MoveStrategy;
 
+import java.util.Objects;
+
+
 public class Car {
     private final Name name;
-    private Position position;
+    private final Position position;
 
-    // TODO: 2019/11/20 private
-    public Car(final String name) {
+    private Car(final String name) {
+        this(name, Position.newInstance());
+    }
+
+    private Car(final String name, final int position) {
+        this(name, Position.of(position));
+    }
+
+    public Car(final String name, final Position position) {
         this.name = Name.of(name);
-        this.position = Position.newInstance();
+        this.position = position;
     }
 
     public static Car of(final String name) {
         return new Car(name);
     }
 
-    void tryMove(final MoveStrategy moveStrategy) {
+    public static Car of(final String name, final int position) {
+        return new Car(name, position);
+    }
+
+    Car tryMove(final MoveStrategy moveStrategy) {
         if (moveStrategy.isAvailableMove(this)) {
-            position = position.increase();
+            return new Car(name.getName(), position.increase());
         }
+        return new Car(name.getName(), position);
+    }
+
+    public boolean matchPosition(final int position) {
+        return this.position.getPosition() == position;
     }
 
     public String getName() {
@@ -28,6 +47,20 @@ public class Car {
 
     public int getPosition() {
         return position.getPosition();
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        final Car car = (Car) o;
+        return Objects.equals(name, car.name) &&
+                Objects.equals(position, car.position);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, position);
     }
 
     @Override

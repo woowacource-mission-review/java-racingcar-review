@@ -2,6 +2,7 @@ package racingcar.domain.car;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class Position {
     private static final int DEFAULT_CACHE_SIZE = 30;
@@ -26,12 +27,20 @@ public class Position {
         return CACHE.get(DEFAULT_POSITION);
     }
 
-    Position increase() {
-        final int increasedPosition = position + UNIT_INCREASE;
-        return CACHE.getOrDefault(increasedPosition, create(increasedPosition));
+    public static Position of(final int position) {
+        return get(position);
     }
 
-    private Position create(final int position) {
+    Position increase() {
+        final int increasedPosition = position + UNIT_INCREASE;
+        return get(increasedPosition);
+    }
+
+    private static Position get(final int position) {
+        return CACHE.getOrDefault(position, create(position));
+    }
+
+    private static Position create(final int position) {
         final Position createdPosition = new Position(position);
         CACHE.put(position, createdPosition);
         return createdPosition;
@@ -39,6 +48,19 @@ public class Position {
 
     int getPosition() {
         return position;
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        final Position position1 = (Position) o;
+        return position == position1.position;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(position);
     }
 
     @Override

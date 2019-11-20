@@ -24,7 +24,6 @@ public class RepeatNumber {
             final int parsedNumber = Integer.parseInt(Objects.requireNonNull(number));
             return new RepeatNumber(parsedNumber);
         } catch (NumberFormatException e) {
-            System.out.println("-------------------------");
             throw new NumberFormatException("숫자를 입력해주세요");
         }
     }
