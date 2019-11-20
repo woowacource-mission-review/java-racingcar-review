@@ -20,7 +20,13 @@ public class RepeatNumber {
 
 
     public static RepeatNumber from(final String number) {
-        return new RepeatNumber(Integer.parseInt(Objects.requireNonNull(number)));
+        try {
+            final int parsedNumber = Integer.parseInt(Objects.requireNonNull(number));
+            return new RepeatNumber(parsedNumber);
+        } catch (NumberFormatException e) {
+            System.out.println("-------------------------");
+            throw new NumberFormatException("숫자를 입력해주세요");
+        }
     }
 
     public int getNumber() {

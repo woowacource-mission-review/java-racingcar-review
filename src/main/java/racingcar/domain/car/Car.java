@@ -6,6 +6,7 @@ public class Car {
     private final Name name;
     private Position position;
 
+    // TODO: 2019/11/20 private
     public Car(final String name) {
         this.name = Name.of(name);
         this.position = Position.newInstance();

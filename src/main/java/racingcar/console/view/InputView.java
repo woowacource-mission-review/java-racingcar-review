@@ -15,6 +15,11 @@ public class InputView {
 
     public static int inputRepeatNumber() {
         System.out.println("시도할 회수는 몇회인가요?");
-        return scanner.nextInt();
+        try {
+            return Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.err.println("숫자만 입력 가능합니다.");
+            return inputRepeatNumber();
+        }
     }
 }

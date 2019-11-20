@@ -43,4 +43,8 @@ public class OutputView {
 
         System.out.println(String.format("%s가 최종 우승했습니다.", joinedWinners));
     }
+
+    public static void printException(final String message) {
+        System.err.println(message);
+    }
 }

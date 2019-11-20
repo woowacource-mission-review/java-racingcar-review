@@ -13,13 +13,30 @@ public class App {
         final MoveStrategy moveStrategy = new RandomNumberMoveStrategy();
         final RacingService racingService = new RacingService(moveStrategy);
 
-        final String names = InputView.inputNames();
-        final Cars cars = racingService.createCars(names);
-
-        final int repeatNumber = InputView.inputRepeatNumber();
-        final RaceResult raceResult = racingService.startRace(repeatNumber, cars);
+        final Cars cars = createCars(racingService);
+        final RaceResult raceResult = startRace(racingService, cars);
 
         OutputView.printRaceResult(raceResult);
         OutputView.printWinner(raceResult.getWinners());
+    }
+
+    private static Cars createCars(final RacingService racingService) {
+        try {
+            final String names = InputView.inputNames();
+            return racingService.createCars(names);
+        } catch (IllegalArgumentException e) {
+            OutputView.printException(e.getMessage());
+            return createCars(racingService);
+        }
+    }
+
+    private static RaceResult startRace(final RacingService racingService, final Cars cars) {
+        try {
+            final int repeatNumber = InputView.inputRepeatNumber();
+            return racingService.startRace(repeatNumber, cars);
+        } catch (RuntimeException e) {
+            OutputView.printException(e.getMessage());
+            return startRace(racingService, cars);
+        }
     }
 }

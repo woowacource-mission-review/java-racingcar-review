@@ -12,7 +12,7 @@ public class RaceStatus {
     private final List<CarDto> carDtos;
 
     public RaceStatus(final List<CarDto> carDtos) {
-        if(carDtos.size() < Cars.MINIMUM_NAMES){
+        if (carDtos.size() < Cars.MINIMUM_NAMES) {
             throw new RaceStatusEmptyException();
         }
         this.carDtos = carDtos;
