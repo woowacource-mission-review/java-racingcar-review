@@ -10,7 +10,6 @@ public class Position {
 
     private static final Map<Integer, Position> CACHE = new HashMap<>();
 
-
     static {
         for (int i = DEFAULT_POSITION; i < DEFAULT_CACHE_SIZE; i += UNIT_INCREASE) {
             CACHE.put(i, new Position(i));
