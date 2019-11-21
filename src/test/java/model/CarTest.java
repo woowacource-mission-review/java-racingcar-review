@@ -48,7 +48,7 @@ public class CarTest {
     @Test
     @DisplayName("이름에 NULL 입력시 차 생성 에러")
     void car_create_null_name() {
-        assertThrows(CarCreateException.class, () -> new Car(null));
+        assertThrows(NullPointerException.class, () -> new Car(null));
     }
 
     @Test

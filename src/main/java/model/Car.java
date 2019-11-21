@@ -3,6 +3,8 @@ package model;
 import model.exception.CarCreateException;
 import model.result.MoveResult;
 
+import java.util.Objects;
+
 public class Car implements Comparable<Car> {
     private static final int CAR_NAME_MAX_LENGTH = 5;
     public static final int DEFAULT_POSITION = 0;
@@ -27,9 +29,7 @@ public class Car implements Comparable<Car> {
     }
 
     private void validateNull(String name) {
-        if (name == null) {
-            throw new CarCreateException("차 이름에 NULL 을 입력할 수 없습니다.");
-        }
+        Objects.requireNonNull(name, "차 이름에 NULL 을 입력할 수 없습니다.");
     }
 
     private void validateEmpty(String name) {

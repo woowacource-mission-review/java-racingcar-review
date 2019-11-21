@@ -7,6 +7,7 @@ import model.result.WinnerResult;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -16,15 +17,12 @@ public class RacingCars {
 
     public RacingCars(List<Car> cars, MoveDeterminer moveDeterminer) {
         validateCars(cars);
-        validateMoveDeterminer(moveDeterminer);
         this.cars = cars;
         this.moveDeterminer = moveDeterminer;
     }
 
     private void validateCars(List<Car> cars) {
-        if (cars == null) {
-            throw new InvalidRegistrationException("자동차에 NULL을 등록할 수 없습니다.");
-        }
+        Objects.requireNonNull(cars, "자동차에 NULL을 등록할 수 없습니다.");
         if (cars.size() < 2) {
             throw new InvalidRegistrationException("자동차 경주를 위해 두 대 이상의 자동차가 필요합니다.");
         }
@@ -37,12 +35,6 @@ public class RacingCars {
                 .collect(Collectors.toSet());
         if (carNames.size() != cars.size()) {
             throw new InvalidRegistrationException("자동차의 이름이 중복됩니다.");
-        }
-    }
-
-    private void validateMoveDeterminer(MoveDeterminer moveDeterminer) {
-        if (moveDeterminer == null) {
-            throw new InvalidRegistrationException("MoveDeterminer 가 Null 입니다.");
         }
     }
 

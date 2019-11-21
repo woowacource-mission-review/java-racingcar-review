@@ -34,7 +34,7 @@ public class RacingCarsTest {
     @Test
     @DisplayName("생성자 파라미터에 NULL 입력")
     void register_null() {
-        assertThrows(InvalidRegistrationException.class,
+        assertThrows(NullPointerException.class,
                 () -> new RacingCars(null, trueDeterminer));
     }
 
