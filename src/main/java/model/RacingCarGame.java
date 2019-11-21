@@ -11,27 +11,27 @@ import java.util.stream.Collectors;
 public class RacingCarGame {
     public static final String CAR_NAME_DELIMITER = ",";
 
-    private MoveDeterminer moveDeterminer;
+    private final MoveDeterminer moveDeterminer;
     private RacingCars racingCars;
     private Round round;
 
-    public RacingCarGame(MoveDeterminer moveDeterminer) {
+    public RacingCarGame(final MoveDeterminer moveDeterminer) {
         this.moveDeterminer = moveDeterminer;
     }
 
-    public boolean registerCar(String rawCarNames) {
+    public boolean registerCar(final String rawCarNames) {
         racingCars = new RacingCars(convertRawCarNamesToCars(rawCarNames), moveDeterminer);
         return true;
     }
 
-    private List<Car> convertRawCarNamesToCars(String rawCarNames) {
+    private List<Car> convertRawCarNamesToCars(final String rawCarNames) {
         return Arrays.stream(rawCarNames.split(CAR_NAME_DELIMITER))
                 .map(String::trim)
                 .map(Car::new)
                 .collect(Collectors.toList());
     }
 
-    public boolean registerRound(int round) {
+    public boolean registerRound(final int round) {
         this.round = new Round(round);
         return true;
     }

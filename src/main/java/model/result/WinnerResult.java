@@ -6,13 +6,13 @@ import java.util.Iterator;
 import java.util.List;
 
 public class WinnerResult implements Iterable<String> {
-    private List<String> winnerNames;
+    private final List<String> winnerNames;
 
-    public WinnerResult(List<String> winnerNames) {
+    public WinnerResult(final List<String> winnerNames) {
         this.winnerNames = winnerNames;
     }
 
-    public boolean contains(Car car) {
+    public boolean contains(final Car car) {
         return winnerNames.contains(car.getName());
     }
 

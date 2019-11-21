@@ -3,10 +3,10 @@ package model.result;
 import java.util.Objects;
 
 public class MoveResult {
-    private String name;
-    private int position;
+    private final String name;
+    private final int position;
 
-    public MoveResult(String name, int position) {
+    public MoveResult(final String name, final int position) {
         this.name = name;
         this.position = position;
     }

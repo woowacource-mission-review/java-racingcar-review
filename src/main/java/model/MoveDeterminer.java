@@ -3,10 +3,10 @@ package model;
 import java.util.Objects;
 
 public class MoveDeterminer {
-    private RandomDigitGenerator generator = new RandomDigitGenerator();
-    private MoveStrategy moveStrategy;
+    private final RandomDigitGenerator generator = new RandomDigitGenerator();
+    private final MoveStrategy moveStrategy;
 
-    public MoveDeterminer(MoveStrategy moveStrategy) {
+    public MoveDeterminer(final MoveStrategy moveStrategy) {
         Objects.requireNonNull(moveStrategy, "MoveStrategy 는 NULL이 아니어야 합니다.");
         this.moveStrategy = moveStrategy;
     }

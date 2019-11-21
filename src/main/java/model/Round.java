@@ -7,14 +7,14 @@ import java.util.Iterator;
 public class Round implements Iterable<Integer> {
     public static final int MIN_ROUND = 1;
 
-    private int round;
+    private final int round;
 
-    Round(int round) {
+    Round(final int round) {
         validate(round);
         this.round = round;
     }
 
-    private void validate(int round) {
+    private void validate(final int round) {
         if (round < MIN_ROUND) {
             throw new InvalidRoundException("라운드는 1이상의 정수여야 합니다.");
         }

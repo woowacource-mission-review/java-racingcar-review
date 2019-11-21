@@ -5,13 +5,13 @@ import java.util.Iterator;
 import java.util.List;
 
 public class RoundResults implements Iterable<RoundResult> {
-    private List<RoundResult> roundResults = new ArrayList<>();
+    private final List<RoundResult> roundResults = new ArrayList<>();
 
-    public void addRoundResult(RoundResult roundResult) {
+    public void addRoundResult(final RoundResult roundResult) {
         roundResults.add(roundResult);
     }
 
-    public RoundResult getRoundResult(int round) {
+    public RoundResult getRoundResult(final int round) {
         return roundResults.get(round - 1);
     }
 

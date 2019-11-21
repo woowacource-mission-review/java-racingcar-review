@@ -1,5 +1,5 @@
 package model;
 
 public interface MoveStrategy {
-    boolean canMove(int seed);
+    boolean canMove(final int seed);
 }

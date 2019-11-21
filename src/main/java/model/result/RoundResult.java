@@ -4,13 +4,13 @@ import java.util.Iterator;
 import java.util.List;
 
 public class RoundResult implements Iterable<MoveResult> {
-    private List<MoveResult> moveResults;
+    private final List<MoveResult> moveResults;
 
-    public RoundResult(List<MoveResult> moveResults) {
+    public RoundResult(final List<MoveResult> moveResults) {
         this.moveResults = moveResults;
     }
 
-    public boolean contains(MoveResult moveResult) {
+    public boolean contains(final MoveResult moveResult) {
         return moveResults.contains(moveResult);
     }
 

@@ -14,16 +14,16 @@ import java.util.stream.Collectors;
 public class RacingCars {
     private static final Integer MIN_CARS_SIZE = 2;
 
-    private List<Car> cars;
-    private MoveDeterminer moveDeterminer;
+    private final List<Car> cars;
+    private final MoveDeterminer moveDeterminer;
 
-    public RacingCars(List<Car> cars, MoveDeterminer moveDeterminer) {
+    public RacingCars(final List<Car> cars, final MoveDeterminer moveDeterminer) {
         validateCars(cars);
         this.cars = cars;
         this.moveDeterminer = moveDeterminer;
     }
 
-    private void validateCars(List<Car> cars) {
+    private void validateCars(final List<Car> cars) {
         Objects.requireNonNull(cars, "자동차에 NULL을 등록할 수 없습니다.");
         if (cars.size() < MIN_CARS_SIZE) {
             throw new InvalidRegistrationException("자동차 경주를 위해 " + MIN_CARS_SIZE + " 대 이상의 자동차가 필요합니다.");
@@ -31,7 +31,7 @@ public class RacingCars {
         validateDuplicateNames(cars);
     }
 
-    private void validateDuplicateNames(List<Car> cars) {
+    private void validateDuplicateNames(final List<Car> cars) {
         Set<String> carNames = cars.stream()
                 .map(Car::getName)
                 .collect(Collectors.toSet());
@@ -46,7 +46,7 @@ public class RacingCars {
                 .collect(Collectors.toList()));
     }
 
-    private MoveResult moveCar(Car car) {
+    private MoveResult moveCar(final Car car) {
         return car.move(moveDeterminer.determine());
     }
 
