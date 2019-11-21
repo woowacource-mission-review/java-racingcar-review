@@ -6,8 +6,8 @@ import model.result.MoveResult;
 import java.util.Objects;
 
 public class Car implements Comparable<Car> {
-    private static final int CAR_NAME_MAX_LENGTH = 5;
     public static final int DEFAULT_POSITION = 0;
+    private static final int CAR_NAME_MAX_LENGTH = 5;
 
     private String name;
     private int position;
@@ -40,7 +40,7 @@ public class Car implements Comparable<Car> {
 
     private void validateLength(String name) {
         if (name.length() > CAR_NAME_MAX_LENGTH) {
-            throw new CarCreateException("차 이름은 5자 이하이어야합니다.");
+            throw new CarCreateException("차 이름은 " + CAR_NAME_MAX_LENGTH + "자 이하이어야합니다.");
         }
     }
 

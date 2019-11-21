@@ -8,7 +8,7 @@ public class DefaultRandomMoveStrategy implements MoveStrategy {
     @Override
     public boolean canMove(int seed) {
         if (seed < MIN_VALUE || seed > MAX_VALUE) {
-            throw new IllegalArgumentException("랜덤 값은 0 ~ 9 사이의 정수이어야 합니다.");
+            throw new IllegalArgumentException("랜덤 값은 " + MIN_VALUE + " ~ " + MAX_VALUE + " 사이의 정수이어야 합니다.");
         }
         return seed >= TRUE_FALSE_BOUNDARY;
     }

@@ -12,6 +12,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class RacingCars {
+    private static final Integer MIN_CARS_SIZE = 2;
+
     private List<Car> cars;
     private MoveDeterminer moveDeterminer;
 
@@ -23,8 +25,8 @@ public class RacingCars {
 
     private void validateCars(List<Car> cars) {
         Objects.requireNonNull(cars, "자동차에 NULL을 등록할 수 없습니다.");
-        if (cars.size() < 2) {
-            throw new InvalidRegistrationException("자동차 경주를 위해 두 대 이상의 자동차가 필요합니다.");
+        if (cars.size() < MIN_CARS_SIZE) {
+            throw new InvalidRegistrationException("자동차 경주를 위해 " + MIN_CARS_SIZE + " 대 이상의 자동차가 필요합니다.");
         }
         validateDuplicateNames(cars);
     }
