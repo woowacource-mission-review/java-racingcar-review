@@ -13,10 +13,6 @@ public class GameNumber {
         this.gameNumber = gameNumber;
     }
 
-    public int getNumber() {
-        return this.gameNumber;
-    }
-
     public void plusOne() {
         this.gameNumber++;
     }
