@@ -15,8 +15,8 @@ public class RacingCarGame {
     private RacingCars racingCars;
     private Round round;
 
-    public RacingCarGame(final MoveDeterminer moveDeterminer) {
-        this.moveDeterminer = moveDeterminer;
+    public RacingCarGame(final MoveStrategy moveStrategy) {
+        this.moveDeterminer = new MoveDeterminer(moveStrategy);
     }
 
     public boolean registerCar(final String rawCarNames) {

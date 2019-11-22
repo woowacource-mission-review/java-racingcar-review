@@ -1,7 +1,6 @@
 package controller;
 
 import model.DefaultRandomMoveStrategy;
-import model.MoveDeterminer;
 import model.RacingCarGame;
 import model.result.GameResult;
 import view.InputView;
@@ -17,7 +16,7 @@ public class RacingGameController {
     public RacingGameController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
-        this.racingCarGame = new RacingCarGame(new MoveDeterminer(new DefaultRandomMoveStrategy()));
+        this.racingCarGame = new RacingCarGame(new DefaultRandomMoveStrategy());
     }
 
     public void start() {

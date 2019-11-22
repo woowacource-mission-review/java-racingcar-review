@@ -12,7 +12,7 @@ import static model.Round.MIN_ROUND;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class RacingCarGameTest {
-    private RacingCarGame racingCarGame = new RacingCarGame(new MoveDeterminer(new DefaultRandomMoveStrategy()));
+    private RacingCarGame racingCarGame = new RacingCarGame(new DefaultRandomMoveStrategy());
 
     @Test
     @DisplayName("차 등록 성공")
@@ -64,7 +64,7 @@ public class RacingCarGameTest {
     @Test
     @DisplayName("게임 결과 확인")
     void game_result() {
-        racingCarGame = new RacingCarGame(new MoveDeterminer(new AlwaysTrueMoveStrategy()));
+        racingCarGame = new RacingCarGame(new AlwaysTrueMoveStrategy());
         racingCarGame.registerCar("ABC,DEF");
         racingCarGame.registerRound(String.valueOf(2));
         GameResult gameResult = racingCarGame.startGame();
