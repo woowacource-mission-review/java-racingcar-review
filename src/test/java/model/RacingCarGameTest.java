@@ -70,14 +70,23 @@ public class RacingCarGameTest {
         GameResult gameResult = racingCarGame.startGame();
 
         WinnerResult winnerResult = gameResult.getWinnerResult();
-        assertTrue(winnerResult.contains(new Car("ABC")));
-        assertTrue(winnerResult.contains(new Car("DEF")));
+        assertWinnerResult(winnerResult);
 
         RoundResults roundResults = gameResult.getRoundResults();
         int position = 1;
         for (RoundResult roundResult : roundResults) {
-            assertTrue(roundResult.contains(new MoveResult("ABC", position)));
-            assertTrue(roundResult.contains(new MoveResult("DEF", position++)));
+            assertRoundResult(position, roundResult);
+            position++;
         }
+    }
+
+    private void assertWinnerResult(final WinnerResult winnerResult) {
+        assertTrue(winnerResult.contains(new Car("ABC")));
+        assertTrue(winnerResult.contains(new Car("DEF")));
+    }
+
+    private void assertRoundResult(final int position, final RoundResult roundResult) {
+        assertTrue(roundResult.contains(new MoveResult("ABC", position)));
+        assertTrue(roundResult.contains(new MoveResult("DEF", position)));
     }
 }

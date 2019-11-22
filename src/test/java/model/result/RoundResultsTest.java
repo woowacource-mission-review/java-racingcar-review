@@ -23,13 +23,13 @@ public class RoundResultsTest {
         int defPosition = 3;
         List<Car> cars = Arrays.asList(new Car("ABC", abcPosition), new Car("DEF", defPosition));
         RacingCars racingCars = new RacingCars(cars, moveDeterminer);
-        int round = 3;
+        int maxRound = 3;
 
-        for (int i = 1; i <= round; i++) {
+        for (int currentRound = 1; currentRound <= maxRound; currentRound++) {
             roundResults.addRoundResult(racingCars.moveCars());
-            RoundResult roundResult = roundResults.getRoundResult(i);
-            assertTrue(roundResult.contains(new MoveResult("ABC", abcPosition + i)));
-            assertTrue(roundResult.contains(new MoveResult("DEF", defPosition + i)));
+            RoundResult roundResult = roundResults.getRoundResult(currentRound);
+            assertTrue(roundResult.contains(new MoveResult("ABC", abcPosition + currentRound)));
+            assertTrue(roundResult.contains(new MoveResult("DEF", defPosition + currentRound)));
         }
     }
 }
