@@ -31,7 +31,7 @@ public class RacingCarGame {
                 .collect(Collectors.toList());
     }
 
-    public boolean registerRound(final int round) {
+    public boolean registerRound(final String round) {
         this.round = new Round(round);
         return true;
     }

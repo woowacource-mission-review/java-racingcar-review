@@ -5,7 +5,6 @@ import view.exception.RepeatCountExceedException;
 import java.util.Scanner;
 
 import static model.RacingCarGame.CAR_NAME_DELIMITER;
-import static model.Round.MIN_ROUND;
 
 public class InputView {
     private static final int MAX_REPEAT_COUNT = 5;
@@ -18,14 +17,10 @@ public class InputView {
         return scanner.nextLine();
     }
 
-    public int inputRound(final int repeatCount) {
+    public String inputRound(final int repeatCount) {
         checkRepeatCount(repeatCount);
-        try {
-            System.out.println("시도할 회수는 몇회인가요?");
-            return Integer.parseInt(scanner.nextLine());
-        } catch (NumberFormatException e) {
-            throw new NumberFormatException(MIN_ROUND + "이상의 정수를 입력해주세요.");
-        }
+        System.out.println("시도할 회수는 몇회인가요?");
+        return scanner.nextLine();
     }
 
     private void checkRepeatCount(final int repeatCount) {
