@@ -13,7 +13,6 @@ import static java.util.stream.Collectors.toList;
 public class Cars {
 
     private static final String CARS_NAME_DELIMITER = ",";
-    public static final int FIRST_INDEX = 0;
     private final List<Car> cars;
 
     public Cars(final String carNameWithComma) {
@@ -41,10 +40,6 @@ public class Cars {
     public List<Car> moveCars(CarMoveStrategy moveStrategy) {
         cars.forEach(car -> car.move(moveStrategy));
         return cars;
-    }
-
-    public List<Car> getCars() {
-        return this.cars;
     }
 
     public int getPositionOf(int index) {
