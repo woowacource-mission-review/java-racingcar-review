@@ -12,6 +12,9 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CarTest {
     private static final String CAR_NAME = "ABC";
 
+    private MoveDeterminer trueDeterminer = new MoveDeterminer(new AlwaysTrueMoveStrategy());
+    private MoveDeterminer falseDeterminer = new MoveDeterminer(new AlwaysFalseMoveStrategy());
+
     @Test
     @DisplayName("차 생성")
     void car_create() {
@@ -61,13 +64,13 @@ public class CarTest {
     @DisplayName("자동차 이동 성공시 위치 증가")
     void car_move_success() {
         Car car = new Car(CAR_NAME);
-        assertEquals(car.move(true), new MoveResult(CAR_NAME, DEFAULT_POSITION + 1));
+        assertEquals(car.move(trueDeterminer), new MoveResult(CAR_NAME, DEFAULT_POSITION + 1));
     }
 
     @Test
     @DisplayName("자동차 이동 실패시 위치 동일한지")
     void car_move_failure() {
         Car car = new Car(CAR_NAME);
-        assertEquals(car.move(false), new MoveResult(CAR_NAME, DEFAULT_POSITION));
+        assertEquals(car.move(falseDeterminer), new MoveResult(CAR_NAME, DEFAULT_POSITION));
     }
 }

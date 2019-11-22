@@ -47,7 +47,7 @@ public class RacingCars {
     }
 
     private MoveResult moveCar(final Car car) {
-        return car.move(moveDeterminer.determine());
+        return car.move(moveDeterminer);
     }
 
     public WinnerResult calculateWinners() {

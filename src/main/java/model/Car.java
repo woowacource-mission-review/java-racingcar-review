@@ -44,8 +44,8 @@ public class Car implements Comparable<Car> {
         }
     }
 
-    public MoveResult move(final boolean moveFlag) {
-        if (moveFlag) {
+    public MoveResult move(final MoveDeterminer moveDeterminer) {
+        if (moveDeterminer.determine()) {
             return new MoveResult(name, ++position);
         }
         return new MoveResult(name, position);
