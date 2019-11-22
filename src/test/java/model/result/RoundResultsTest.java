@@ -26,7 +26,7 @@ public class RoundResultsTest {
         int maxRound = 3;
 
         for (int currentRound = 1; currentRound <= maxRound; currentRound++) {
-            roundResults.addRoundResult(racingCars.moveCars());
+            roundResults.addRoundResult(racingCars.playOneRound());
             RoundResult roundResult = roundResults.getRoundResult(currentRound);
             assertTrue(roundResult.contains(new MoveResult("ABC", abcPosition + currentRound)));
             assertTrue(roundResult.contains(new MoveResult("DEF", defPosition + currentRound)));

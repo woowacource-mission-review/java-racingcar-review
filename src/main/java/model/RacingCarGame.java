@@ -40,7 +40,7 @@ public class RacingCarGame {
         checkRegistration();
         RoundResults roundResults = new RoundResults();
         for (Integer integer : round) {
-            roundResults.addRoundResult(racingCars.moveCars());
+            roundResults.addRoundResult(racingCars.playOneRound());
         }
         return new GameResult(roundResults, racingCars.calculateWinners());
     }

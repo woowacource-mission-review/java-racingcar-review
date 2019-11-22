@@ -63,7 +63,7 @@ public class RacingCarsTest {
     @DisplayName("MoveDeterminer가 true를 리턴할 때 움직이는지")
     void if_determiner_return_true_move() {
         RacingCars racingCars = new RacingCars(cars, trueDeterminer);
-        racingCars.moveCars();
+        racingCars.playOneRound();
         for (Car car : cars) {
             assertThat(car.matchPosition(1)).isTrue();
         }
@@ -73,7 +73,7 @@ public class RacingCarsTest {
     @DisplayName("MoveDeterminer가 false를 리턴할 때 움직이지 않는지")
     void if_determiner_return_false_not_move() {
         RacingCars racingCars = new RacingCars(cars, falseDeterminer);
-        racingCars.moveCars();
+        racingCars.playOneRound();
         for (Car car : cars) {
             assertThat(car.matchPosition(0)).isTrue();
         }
@@ -83,7 +83,7 @@ public class RacingCarsTest {
     @DisplayName("RoundResult 확인")
     void check_round_results() {
         RacingCars racingCars = new RacingCars(cars, trueDeterminer);
-        RoundResult roundResult = racingCars.moveCars();
+        RoundResult roundResult = racingCars.playOneRound();
         assertTrue(roundResult.contains(new MoveResult("ABC", 1)));
         assertTrue(roundResult.contains(new MoveResult("DEF", 1)));
     }
@@ -95,7 +95,7 @@ public class RacingCarsTest {
         Car loser = new Car("DEF");
         cars = Arrays.asList(winner, loser);
         RacingCars racingCars = new RacingCars(cars, trueDeterminer);
-        racingCars.moveCars();
+        racingCars.playOneRound();
         assertTrue(racingCars.calculateWinners().contains(winner));
         assertFalse(racingCars.calculateWinners().contains(loser));
     }
@@ -107,7 +107,7 @@ public class RacingCarsTest {
         Car winner2 = new Car("DEF", 2);
         cars = Arrays.asList(winner1, winner2);
         RacingCars racingCars = new RacingCars(cars, trueDeterminer);
-        racingCars.moveCars();
+        racingCars.playOneRound();
         assertTrue(racingCars.calculateWinners().contains(winner1));
         assertTrue(racingCars.calculateWinners().contains(winner2));
     }

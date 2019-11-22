@@ -40,14 +40,14 @@ public class RacingCars {
         }
     }
 
-    public RoundResult moveCars() {
+    public RoundResult playOneRound() {
         return new RoundResult(cars.stream()
-                .map(this::moveCar)
+                .map(this::tryMove)
                 .collect(Collectors.toList()));
     }
 
-    private MoveResult moveCar(final Car car) {
-        return car.move(moveDeterminer);
+    private MoveResult tryMove(final Car car) {
+        return car.tryMove(moveDeterminer);
     }
 
     public WinnerResult calculateWinners() {
