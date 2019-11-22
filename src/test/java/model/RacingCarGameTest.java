@@ -52,13 +52,13 @@ public class RacingCarGameTest {
     @Test
     @DisplayName("1이상 정수로 라운드 등록")
     void register_round() {
-        assertDoesNotThrow(() -> racingCarGame.registerRound(MIN_ROUND));
+        assertDoesNotThrow(() -> racingCarGame.registerRound(String.valueOf(MIN_ROUND)));
     }
 
     @Test
     @DisplayName("1미만 정수로 라운드 등록시 에러 발생")
     void register_over_1_round() {
-        assertThrows(InvalidRoundException.class, () -> racingCarGame.registerRound(MIN_ROUND - 1));
+        assertThrows(InvalidRoundException.class, () -> racingCarGame.registerRound(String.valueOf(MIN_ROUND - 1)));
     }
 
     @Test
@@ -66,7 +66,7 @@ public class RacingCarGameTest {
     void game_result() {
         racingCarGame = new RacingCarGame(new MoveDeterminer(new AlwaysTrueMoveStrategy()));
         racingCarGame.registerCar("ABC,DEF");
-        racingCarGame.registerRound(2);
+        racingCarGame.registerRound(String.valueOf(2));
         GameResult gameResult = racingCarGame.startGame();
 
         WinnerResult winnerResult = gameResult.getWinnerResult();
