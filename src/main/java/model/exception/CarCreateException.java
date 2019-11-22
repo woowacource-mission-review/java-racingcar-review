@@ -1,6 +1,6 @@
 package model.exception;
 
-public class CarCreateException extends RuntimeException {
+public class CarCreateException extends IllegalArgumentException {
     public CarCreateException(String message) {
         super(message);
     }

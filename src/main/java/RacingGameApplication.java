@@ -8,6 +8,10 @@ public class RacingGameApplication {
         OutputView outputView = new OutputView();
 
         RacingGameController racingGameController = new RacingGameController(inputView, outputView);
-        racingGameController.start();
+        try {
+            racingGameController.start();
+        } catch (RuntimeException e) {
+            outputView.showErrorMessage(e);
+        }
     }
 }

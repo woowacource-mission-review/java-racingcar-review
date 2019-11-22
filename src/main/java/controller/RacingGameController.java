@@ -8,6 +8,8 @@ import view.InputView;
 import view.OutputView;
 
 public class RacingGameController {
+    private static final int INITIAL_REPEAT_COUNT = 0;
+
     private InputView inputView;
     private OutputView outputView;
     private RacingCarGame racingCarGame;
@@ -19,8 +21,8 @@ public class RacingGameController {
     }
 
     public void start() {
-        registerCar();
-        registerRound();
+        registerCar(INITIAL_REPEAT_COUNT);
+        registerRound(INITIAL_REPEAT_COUNT);
         GameResult gameResult = racingCarGame.startGame();
         showResult(gameResult);
     }
@@ -29,21 +31,21 @@ public class RacingGameController {
         outputView.showResults(gameResult);
     }
 
-    private boolean registerCar() {
+    private boolean registerCar(final int repeatCount) {
         try {
-            return racingCarGame.registerCar(inputView.inputCarNames());
-        } catch (RuntimeException e) {
+            return racingCarGame.registerCar(inputView.inputCarNames(repeatCount));
+        } catch (IllegalArgumentException | NullPointerException e) {
             outputView.showErrorMessage(e);
-            return registerCar();
+            return registerCar(repeatCount + 1);
         }
     }
 
-    private boolean registerRound() {
+    private boolean registerRound(final int repeatCount) {
         try {
-            return racingCarGame.registerRound(inputView.inputRound());
-        } catch (RuntimeException e) {
+            return racingCarGame.registerRound(inputView.inputRound(repeatCount));
+        } catch (IllegalArgumentException | NullPointerException e) {
             outputView.showErrorMessage(e);
-            return registerRound();
+            return registerRound(repeatCount + 1);
         }
     }
 }

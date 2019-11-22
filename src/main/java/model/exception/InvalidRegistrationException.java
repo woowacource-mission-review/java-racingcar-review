@@ -1,6 +1,6 @@
 package model.exception;
 
-public class InvalidRegistrationException extends RuntimeException {
+public class InvalidRegistrationException extends IllegalArgumentException {
     public InvalidRegistrationException(String message) {
         super(message);
     }
