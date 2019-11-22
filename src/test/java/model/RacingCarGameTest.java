@@ -7,7 +7,7 @@ import model.result.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static model.RacingCarGame.CAR_NAME_DELIMITER;
+import static model.RacingCars.CAR_NAME_DELIMITER;
 import static model.Round.MIN_ROUND;
 import static org.junit.jupiter.api.Assertions.*;
 

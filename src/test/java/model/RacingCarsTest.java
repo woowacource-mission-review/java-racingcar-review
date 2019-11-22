@@ -32,13 +32,6 @@ public class RacingCarsTest {
     }
 
     @Test
-    @DisplayName("생성자 파라미터에 NULL 입력")
-    void register_null() {
-        assertThrows(NullPointerException.class,
-                () -> new RacingCars(null, trueDeterminer));
-    }
-
-    @Test
     @DisplayName("생성자에 빈 리스트 입력")
     void register_empty_list() {
         assertThrows(InvalidRegistrationException.class,

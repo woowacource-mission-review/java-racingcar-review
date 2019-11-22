@@ -4,13 +4,7 @@ import model.exception.InvalidRegistrationException;
 import model.result.GameResult;
 import model.result.RoundResults;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class RacingCarGame {
-    public static final String CAR_NAME_DELIMITER = ",";
-
     private final MoveDeterminer moveDeterminer;
     private RacingCars racingCars;
     private Round round;
@@ -20,15 +14,8 @@ public class RacingCarGame {
     }
 
     public boolean registerCar(final String rawCarNames) {
-        racingCars = new RacingCars(convertRawCarNamesToCars(rawCarNames), moveDeterminer);
+        racingCars = new RacingCars(rawCarNames, moveDeterminer);
         return true;
-    }
-
-    private List<Car> convertRawCarNamesToCars(final String rawCarNames) {
-        return Arrays.stream(rawCarNames.split(CAR_NAME_DELIMITER))
-                .map(String::trim)
-                .map(Car::new)
-                .collect(Collectors.toList());
     }
 
     public boolean registerRound(final String round) {

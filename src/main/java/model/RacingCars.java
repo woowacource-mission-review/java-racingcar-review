@@ -5,22 +5,34 @@ import model.result.MoveResult;
 import model.result.RoundResult;
 import model.result.WinnerResult;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class RacingCars {
+    public static final String CAR_NAME_DELIMITER = ",";
     private static final Integer MIN_CARS_SIZE = 2;
 
     private final List<Car> cars;
     private final MoveDeterminer moveDeterminer;
 
+    RacingCars(final String rawCarNames, final MoveDeterminer moveDeterminer) {
+        List<Car> cars = convertRawCarNamesToCars(rawCarNames);
+        validateCars(cars);
+        this.cars = cars;
+        this.moveDeterminer = moveDeterminer;
+    }
+
     public RacingCars(final List<Car> cars, final MoveDeterminer moveDeterminer) {
         validateCars(cars);
         this.cars = cars;
         this.moveDeterminer = moveDeterminer;
+    }
+
+    private List<Car> convertRawCarNamesToCars(final String rawCarNames) {
+        return Arrays.stream(rawCarNames.split(CAR_NAME_DELIMITER))
+                .map(String::trim)
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
     private void validateCars(final List<Car> cars) {

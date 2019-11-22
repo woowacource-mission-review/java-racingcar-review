@@ -4,7 +4,7 @@ import view.exception.RepeatCountExceedException;
 
 import java.util.Scanner;
 
-import static model.RacingCarGame.CAR_NAME_DELIMITER;
+import static model.RacingCars.CAR_NAME_DELIMITER;
 
 public class InputView {
     private static final int MAX_REPEAT_COUNT = 5;
