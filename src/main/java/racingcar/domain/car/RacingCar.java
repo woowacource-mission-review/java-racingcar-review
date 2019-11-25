@@ -9,6 +9,7 @@ import java.util.Objects;
 public class RacingCar implements Comparable<RacingCar> {
 
     public static final int MIN_OF_CAR_NAME_LENGTH = 5;
+
     private final Name name;
     private long position;
 

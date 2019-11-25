@@ -7,6 +7,7 @@ import java.util.Objects;
 public class GameRound {
 
     public static final long MIN_NUM_OF_GAME_ROUND = 1;
+
     private final long roundNum;
 
     GameRound(final long roundNum) {
