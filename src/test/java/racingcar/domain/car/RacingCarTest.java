@@ -2,11 +2,8 @@ package racingcar.domain.car;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.exception.ExcessOfCarNameLengthException;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class RacingCarTest {
 
@@ -25,14 +22,6 @@ class RacingCarTest {
         RacingCar car = new RacingCar("red");
 
         assertThat(car.getPosition()).isEqualTo(0L);
-    }
-
-    @Test
-    @DisplayName("자동차 이름의 길이는 최대 5자")
-    void lengthOfCarName() {
-        assertDoesNotThrow(() -> new RacingCar("green"));
-
-        assertThrows(ExcessOfCarNameLengthException.class, () -> new RacingCar("violet"));
     }
 
     @Test
@@ -64,18 +53,6 @@ class RacingCarTest {
         car.move(() -> true);
 
         assertThat(copiedCar.getPosition()).isEqualTo(1L);
-    }
-
-    @Test
-    @DisplayName("공백으로 글자수가 채워진 이름 리턴")
-    void getAlignedName() {
-        RacingCar redCar = new RacingCar("red");
-        RacingCar blueCar = new RacingCar("blue");
-        RacingCar greenCar = new RacingCar("green");
-
-        assertThat(redCar.getAlignedName()).isEqualTo("red  ");
-        assertThat(blueCar.getAlignedName()).isEqualTo("blue ");
-        assertThat(greenCar.getAlignedName()).isEqualTo("green");
     }
 
     @Test

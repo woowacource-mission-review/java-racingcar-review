@@ -7,22 +7,22 @@ import java.util.Objects;
 
 public class Name {
 
-    private final String name;
+    private final String innerName;
 
-    public Name(final String name) {
-        if (StringUtils.isBlank(name)) {
+    public Name(final String innerName) {
+        if (StringUtils.isBlank(innerName)) {
             throw new IllegalNameException();
         }
 
-        this.name = name;
+        this.innerName = innerName;
     }
 
-    public String getName() {
-        return name;
+    public String getInnerName() {
+        return innerName;
     }
 
     public boolean isLengthLongerThan(final int length) {
-        return name.length() > length;
+        return innerName.length() > length;
     }
 
     @Override
@@ -30,11 +30,11 @@ public class Name {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         final Name name1 = (Name) o;
-        return Objects.equals(name, name1.name);
+        return Objects.equals(innerName, name1.innerName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name);
+        return Objects.hash(innerName);
     }
 }

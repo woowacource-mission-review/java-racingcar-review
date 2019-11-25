@@ -1,17 +1,14 @@
 package racingcar.domain.car;
 
-import org.apache.commons.lang3.StringUtils;
 import racingcar.domain.movingstrategy.MovingStrategy;
-import racingcar.exception.ExcessOfCarNameLengthException;
 
 import java.util.Objects;
 
 public class RacingCar implements Comparable<RacingCar> {
 
-    public static final int MIN_OF_CAR_NAME_LENGTH = 5;
     private static final int INITIAL_POSITION = 0;
 
-    private final Name name;
+    private final RacingCarName name;
     private long position;
 
     public RacingCar(final String name) {
@@ -19,12 +16,7 @@ public class RacingCar implements Comparable<RacingCar> {
     }
 
     public RacingCar(final String name, final long position) {
-        Name preName = new Name(name);
-        if (preName.isLengthLongerThan(MIN_OF_CAR_NAME_LENGTH)) {
-            throw new ExcessOfCarNameLengthException();
-        }
-
-        this.name = preName;
+        this.name = new RacingCarName(name);
         this.position = position;
     }
 
@@ -43,7 +35,7 @@ public class RacingCar implements Comparable<RacingCar> {
     }
 
     public String getAlignedName() {
-        return StringUtils.rightPad(name.getName(), MIN_OF_CAR_NAME_LENGTH);
+        return name.getAlignedName();
     }
 
     public String getName() {

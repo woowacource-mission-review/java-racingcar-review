@@ -15,7 +15,7 @@ class NameTest {
         String newName = "이름";
         Name name = new Name(newName);
 
-        assertThat(name.getName()).isEqualTo(newName);
+        assertThat(name.getInnerName()).isEqualTo(newName);
     }
 
     @Test
