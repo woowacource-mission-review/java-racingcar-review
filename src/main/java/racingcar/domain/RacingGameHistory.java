@@ -5,6 +5,7 @@ import racingcar.domain.car.RacingCars;
 import racingcar.domain.gameround.GameRound;
 
 import java.util.Map;
+import java.util.Set;
 
 public class RacingGameHistory {
 
@@ -19,6 +20,7 @@ public class RacingGameHistory {
     }
 
     public long getNumOfGameRounds() {
-        return history.keySet().size();
+        Set<GameRound> gameRounds = history.keySet();
+        return gameRounds.size();
     }
 }
