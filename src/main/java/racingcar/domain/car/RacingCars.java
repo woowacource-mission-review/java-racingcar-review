@@ -1,26 +1,51 @@
 package racingcar.domain.car;
 
 import racingcar.domain.movingstrategy.MovingStrategy;
+import racingcar.exception.DuplicateCarsException;
+import racingcar.exception.LackOfCarsException;
 import racingcar.exception.WinnerNotFoundException;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class RacingCars {
 
+    public static final int MIN_NUM_OF_RACING_CARS = 2;
+
     private List<RacingCar> cars;
 
     public RacingCars(final List<RacingCar> cars) {
+        if (isNotEnoughCars(cars)) {
+            throw new LackOfCarsException();
+        }
+
+        if (hasDuplicateNamesIn(cars)) {
+            throw new DuplicateCarsException();
+        }
+
         this.cars = cars;
     }
 
-    public RacingCars(RacingCars racingCars) {
-        this(new ArrayList<>());
+    private boolean isNotEnoughCars(final List<RacingCar> cars) {
+        return cars.size() < MIN_NUM_OF_RACING_CARS;
+    }
+
+    private boolean hasDuplicateNamesIn(final List<RacingCar> cars) {
+        Set<RacingCar> nameSet = new HashSet<>(cars);
+
+        return cars.size() != nameSet.size();
+    }
+
+    public static RacingCars of(RacingCars racingCars) {
+        List<RacingCar> cars = new ArrayList<>();
         for (RacingCar car : racingCars.cars) {
-            this.cars.add(new RacingCar(car));
+            cars.add(new RacingCar(car));
         }
+        return new RacingCars(cars);
     }
 
     public RacingCar get(int index) {
@@ -41,13 +66,11 @@ public class RacingCars {
         }
     }
 
-    public RacingCars findWinners() {
+    public List<RacingCar> findWinners() {
         RacingCar winner = findOneWinner();
-        List<RacingCar> carList = cars.stream()
+        return cars.stream()
                 .filter(winner::isSamePosition)
                 .collect(Collectors.toList());
-
-        return new RacingCars(carList);
     }
 
     private RacingCar findOneWinner() {

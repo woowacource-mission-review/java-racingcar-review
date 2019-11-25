@@ -1,7 +1,10 @@
 package racingcar.domain;
 
+import racingcar.domain.car.RacingCar;
 import racingcar.domain.car.RacingCars;
 import racingcar.domain.gameround.GameRoundPool;
+
+import java.util.List;
 
 public class RacingGameResult {
 
@@ -19,7 +22,7 @@ public class RacingGameResult {
         return history.getNumOfGameRounds();
     }
 
-    public RacingCars findWinners() {
+    public List<RacingCar> findWinners() {
         long numOfGameRounds = history.getNumOfGameRounds();
         RacingCars cars = read(numOfGameRounds);
 

@@ -8,8 +8,6 @@ import racingcar.domain.car.RacingCar;
 import racingcar.domain.car.RacingCars;
 import racingcar.domain.gameround.GameRound;
 import racingcar.domain.gameround.GameRoundPool;
-import racingcar.exception.DuplicateCarsException;
-import racingcar.exception.LackOfCarsException;
 
 import java.util.Arrays;
 
@@ -34,18 +32,6 @@ class RacingCarServiceTest {
         assertThat(cars.contains(new RacingCar("red"))).isTrue();
         assertThat(cars.contains(new RacingCar("blue"))).isTrue();
         assertThat(cars.contains(new RacingCar("green"))).isTrue();
-    }
-
-    @Test
-    @DisplayName("콤마로 구분된 Car 이름의 개수가 2개 미만일 경우 예외 발생")
-    void createCarsByParsingWith_lackOfCarsException() {
-        assertThrows(LackOfCarsException.class, () -> racingCarService.createCarsByParsingWith("red"));
-    }
-
-    @Test
-    @DisplayName("Car 이름이 중복된 경우 예외 발생")
-    void createCarsByParsingWith_duplicateCars() {
-        assertThrows(DuplicateCarsException.class, () -> racingCarService.createCarsByParsingWith("red, blue, red"));
     }
 
     @Test

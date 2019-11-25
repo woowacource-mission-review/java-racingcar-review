@@ -54,11 +54,11 @@ public class OutputView {
     }
 
     public static void showWinners(final RacingGameResult result) {
-        RacingCars winners = result.findWinners();
+        List<RacingCar> winners = result.findWinners();
         System.out.println(generateWinnersName(winners) + GAME_WINNER_MESSAGE);
     }
 
-    private static String generateWinnersName(RacingCars cars) {
+    private static String generateWinnersName(List<RacingCar> cars) {
         List<String> carNames = cars.stream()
                 .map(RacingCar::getName)
                 .collect(Collectors.toList());

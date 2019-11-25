@@ -33,9 +33,8 @@ class RacingGameResultTest {
 
     @Test
     void findWinners() {
-        RacingCars winners = result.findWinners();
+        List<RacingCar> winners = result.findWinners();
 
-        assertThat(winners).isNotNull();
         assertThat(winners.contains(new RacingCar("red"))).isTrue();
         assertThat(winners.contains(new RacingCar("blue"))).isFalse();
         assertThat(winners.contains(new RacingCar("green"))).isFalse();

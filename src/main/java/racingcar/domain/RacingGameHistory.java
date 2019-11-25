@@ -15,7 +15,7 @@ public class RacingGameHistory {
     }
 
     public RacingCars read(final GameRound gameRound) {
-        return new RacingCars(history.get(gameRound));
+        return RacingCars.of(history.get(gameRound));
     }
 
     public long getNumOfGameRounds() {
