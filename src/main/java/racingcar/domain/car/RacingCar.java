@@ -9,12 +9,13 @@ import java.util.Objects;
 public class RacingCar implements Comparable<RacingCar> {
 
     public static final int MIN_OF_CAR_NAME_LENGTH = 5;
+    private static final int INITIAL_POSITION = 0;
 
     private final Name name;
     private long position;
 
     public RacingCar(final String name) {
-        this(name, 0);
+        this(name, INITIAL_POSITION);
     }
 
     public RacingCar(final String name, final long position) {
