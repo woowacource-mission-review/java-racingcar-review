@@ -10,22 +10,29 @@ import racingcar.view.OutputView;
 
 public class RacingCarController {
 
+    private final InputView inputView;
+    private final OutputView outputView;
     private final RacingCarService racingCarService = new RacingCarService();
+
+    public RacingCarController(final InputView inputView, final OutputView outputView) {
+        this.inputView = inputView;
+        this.outputView = outputView;
+    }
 
     public void run() {
         try {
-            String carNames = InputView.inputCarName();
+            String carNames = inputView.inputCarName();
             RacingCars cars = racingCarService.createCarsByParsingWith(carNames);
 
-            String round = InputView.inputGameRound();
+            String round = inputView.inputGameRound();
             GameRound gameRound = racingCarService.createGameRound(round);
 
             RacingGameResult result = racingCarService.race(cars, gameRound, new RandomMovingStrategy());
-            OutputView.showGameProcess(result);
+            outputView.showGameProcess(result);
 
-            OutputView.showWinners(result);
+            outputView.showWinners(result);
         } catch (IllegalArgumentException e) {
-            OutputView.showExceptionMessageForPlayer(e);
+            outputView.showExceptionMessageForPlayer(e);
         }
     }
 }
